@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "config:base",
+    "schedule:weekly"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "commitMessagePrefix": "[Renovate] ",
+  "automergeType": "branch",
+  "packageRules": [
+    {
+      "updateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true
+    },
+    {
+      "depTypeList": [
+        "devDependencies"
+      ],
+      "automerge": true
+    }
+  ]
+}
