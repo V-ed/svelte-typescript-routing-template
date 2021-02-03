@@ -22,7 +22,9 @@
     "sveltestrap": "^3.13.0",
     "typescript": "^4.1.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "socket.io-client": "^3.1.0"
+  },
   "routify": {
     "routifyDir": "routify"
   }
