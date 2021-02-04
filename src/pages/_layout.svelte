@@ -2,7 +2,7 @@
 	import { Container } from 'sveltestrap';
 	import Navbar from './_components/Navbar.svelte';
 	import { metatags, page } from '@roxi/routify';
-	import { capitalize } from 'src/utils';
+	import { capitalize } from '$/utils';
 
 	metatags.template('title', (title: string) => `${title ? `${title} - ` : ''}Template`);
 	$: metatags.title = capitalize($page.title);

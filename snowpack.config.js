@@ -1,29 +1,26 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 module.exports = {
-  mount: {
-    "public": '/',
-    "routify": '/routify',
-    "src": '/dist'
-  },
-  alias: {
-    "src": "./src"
-  },
-  plugins: [
-    '@snowpack/plugin-svelte',
-    '@snowpack/plugin-typescript'
-  ],
-  routes: [
-    /* Enable an SPA Fallback in development: */
-    {match: "routes", src: ".*", dest: "/index.html"},
-  ],
-  optimize: {
-    /* Example: Bundle your final build: */
-    // "bundle": true,
-  },
-  packageOptions: {
-    // source: "remote",
-    // types: true,
-  },
-  devOptions: {},
-  buildOptions: {},
+	mount: {
+		public: '/',
+		routify: '/routify',
+		src: '/dist',
+	},
+	alias: {
+		$: './src',
+	},
+	plugins: ['@snowpack/plugin-svelte', '@snowpack/plugin-typescript'],
+	routes: [
+		/* Enable an SPA Fallback in development: */
+		{ match: 'routes', src: '.*', dest: '/index.html' },
+	],
+	optimize: {
+		/* Example: Bundle your final build: */
+		// "bundle": true,
+	},
+	packageOptions: {
+		// source: "remote",
+		// types: true,
+	},
+	devOptions: {},
+	buildOptions: {},
 };
