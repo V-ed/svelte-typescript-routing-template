@@ -12,6 +12,8 @@
 		{ name: 'Item 2', done: false, count: 0 },
 		{ name: 'Item 3', done: false, count: 0 },
 	];
+
+	// console.log(import.meta.env);
 </script>
 
 <!-- routify:options title="Home" -->

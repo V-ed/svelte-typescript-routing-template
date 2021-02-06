@@ -33,8 +33,6 @@
 	};
 </script>
 
-{#if false}<slot />{/if}
-
 <div class="align-self-center {classes}" hidden={doHide && isDone}>
 	{#await promise}
 		<Spinner />
