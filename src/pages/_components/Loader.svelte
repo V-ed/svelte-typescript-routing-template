@@ -9,7 +9,7 @@
 	export let size: CSS.Properties['width'] = '2rem';
 	export let promise: Promise<unknown>;
 	export let doHide: boolean = false;
-	export let name: string = (+new Date()).toString();
+	export let name: string = Date.now().toString();
 
 	promise.then(() => (isDone = true)).catch(() => {});
 
@@ -37,15 +37,25 @@
 	{#await promise}
 		<Spinner />
 	{:then}
-		<img id={`loader-success-${name}`} class="colorize-green" style="width: {size};" src="./images/check.svg" alt="Succès" />
-		{#if popoverSuccessProps}
+		<img
+			id={`loader-success-${name}`}
+			class="colorize-green"
+			style="width: {size};"
+			src="./images/check.svg"
+			alt="Succès"
+		/>{#if popoverSuccessProps}
 			<Popover {...popoverSuccessProps}>
 				<slot name="popover-success-content" />
 			</Popover>
 		{/if}
 	{:catch}
-		<img id={`loader-failure-${name}`} class="colorize-red" style="width: {size};" src="./images/alert-octagon.svg" alt="Avertissement" />
-		{#if popoverFailureProps}
+		<img
+			id={`loader-failure-${name}`}
+			class="colorize-red"
+			style="width: {size};"
+			src="./images/alert-octagon.svg"
+			alt="Avertissement"
+		/>{#if popoverFailureProps}
 			<Popover {...popoverFailureProps}>
 				<slot name="popover-failure-content" />
 			</Popover>
