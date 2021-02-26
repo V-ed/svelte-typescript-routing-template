@@ -10,15 +10,15 @@
 	let username: string;
 	let message: string;
 
-	type Banana = { username: string; message: string };
+	type Banana = { user: { username: string }; message: string };
 
 	let messages: Banana[] = [];
 
 	const socket = getIO();
 
-	socket.on('send_message', ({ username, message }: { username: string; message: string }) => {
+	socket.on('send_message', ({ user, message }: { user: { username: string }; message: string }) => {
 		console.log(username, message);
-		messages = [...messages, { username, message }];
+		messages = [...messages, { user, message }];
 	});
 
 	function handleSend(e: Event) {
@@ -32,8 +32,10 @@
 		message = '';
 	}
 
+	const request = fetch('http://localhost:3000/messages');
+
 	const promise = onMountPromise(async () => {
-		const response = await delayer(() => fetch('http://localhost:3000/messages'), 1000);
+		const response = await delayer(() => request, 1000);
 
 		const newMessages = await response.value?.json();
 
@@ -52,8 +54,8 @@
 			<p class="font-italic">Messages will appear here...</p>
 		{:else}
 			<ul id="messages">
-				{#each messages as { username, message }}
-					<Message user={username} {message} />
+				{#each messages as { user, message }}
+					<Message user={user.username} {message} />
 				{/each}
 			</ul>
 		{/if}
