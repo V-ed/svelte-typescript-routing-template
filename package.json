@@ -1,9 +1,9 @@
 {
   "scripts": {
     "dev": "routify -c dev:snowpack",
-    "dev:no-open": "routify -c dev:snowpack-no-open",
-    "dev:snowpack": "snowpack dev",
-    "dev:snowpack-no-open": "snowpack dev --open none",
+    "dev:open": "routify -c dev:snowpack-open",
+    "dev:snowpack": "snowpack dev --open none",
+    "dev:snowpack-open": "snowpack dev",
     "build": "routify -b && snowpack build",
     "format": "eslint --fix \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\"",
