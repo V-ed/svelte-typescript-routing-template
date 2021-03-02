@@ -24,8 +24,7 @@
     "typescript": "^4.2.2"
   },
   "dependencies": {
-    "minimum-delayer": "^0.1.0",
-    "socket.io-client": "^3.1.2"
+    "minimum-delayer": "^0.1.0"
   },
   "routify": {
     "routifyDir": "routify"

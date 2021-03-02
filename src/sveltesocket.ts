@@ -1,68 +1,39 @@
-import type { Socket } from 'socket.io-client';
-import { io } from 'socket.io-client';
 import { onDestroy } from 'svelte';
 
-const socket = io('http://localhost:3000/', { autoConnect: false });
+const socket = new WebSocket('ws://localhost:3000/');
 
-type SocketOnParams = Parameters<typeof socket.on>;
-type SocketOnAnyParams = Parameters<typeof socket.onAny>;
+type SocketAddParams = Parameters<typeof socket.addEventListener>;
+type SocketRemoveParams = Parameters<typeof socket.addEventListener>;
 
-type SocketOnFunction = {
-	key: 'on';
-	arguments: SocketOnParams;
-};
-type SocketOnAnyFunction = {
-	key: 'onAny';
-	arguments: SocketOnAnyParams;
-};
+export function getSocket(): WebSocket {
+	// if (!socket.connected) {
+	// 	socket.connect();
+	// }
 
-export function getIO(): Socket {
-	if (!socket.connected) {
-		socket.connect();
-	}
-
-	let socketListeners: (SocketOnFunction | SocketOnAnyFunction)[] = [];
+	let socketListenersParams: SocketAddParams[] = [];
 
 	onDestroy(() => {
-		socketListeners.forEach((socketListener) => {
-			if (socketListener.key == 'on') {
-				socket.off(...socketListener.arguments);
-			} else {
-				socket.offAny(...socketListener.arguments);
-			}
+		socketListenersParams.forEach((socketListenerParams) => {
+			socket.removeEventListener(...socketListenerParams);
 		});
-		socket.disconnect();
+		socket.close();
 	});
 
 	return new Proxy(socket, {
-		get: (target, prop: keyof Socket, receiver) => {
+		get: (target, prop: keyof WebSocket, receiver) => {
 			const origMethod = Reflect.get(target, prop, receiver);
 
 			if (typeof origMethod == 'function') {
-				if (prop == 'on') {
-					return (...args: SocketOnParams) => {
-						socketListeners.push({ key: prop, arguments: args });
+				if (prop == 'addEventListener') {
+					return (...args: SocketAddParams) => {
+						socketListenersParams.push(args);
 						return target[prop](...args);
 					};
-				} else if (prop == 'off') {
-					const origMethodProxied: typeof target['off'] = (...args) => {
-						socketListeners = socketListeners.filter((item) => item.key == 'onAny' || item.arguments !== args);
+				} else if (prop == 'removeEventListener') {
+					return (...args: SocketRemoveParams) => {
+						socketListenersParams = socketListenersParams.filter((item) => item !== args);
 						return target[prop](...args);
 					};
-
-					return origMethodProxied;
-				} else if (prop == 'onAny') {
-					return (...args: SocketOnAnyParams) => {
-						socketListeners.push({ key: prop, arguments: args });
-						return target[prop](...args);
-					};
-				} else if (prop == 'offAny') {
-					const origMethodProxied: typeof target['offAny'] = (...args) => {
-						socketListeners = socketListeners.filter((item) => item.key == 'on' || item.arguments !== args);
-						return target[prop](...args);
-					};
-
-					return origMethodProxied;
 				}
 			}
 

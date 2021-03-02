@@ -1,6 +1,6 @@
 <!-- routify:options title="Chat" -->
 <script lang="ts">
-	import { getIO } from '$/sveltesocket';
+	import { getSocket } from '$/sveltesocket';
 	import { Button, Col, Form, FormGroup, Input, Label } from 'sveltestrap';
 	import Loader from '$/pages/_components/Loader.svelte';
 	import Message from './_component/Message.svelte';
@@ -14,7 +14,7 @@
 
 	let messages: Banana[] = [];
 
-	const socket = getIO();
+	const socket = getSocket();
 
 	socket.on('send_message', ({ user, message }: { user: { username: string }; message: string }) => {
 		console.log(username, message);
