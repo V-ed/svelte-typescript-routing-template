@@ -2,7 +2,7 @@ import type { Socket } from 'socket.io-client';
 import { io } from 'socket.io-client';
 import { onDestroy } from 'svelte';
 
-const socket = io('http://localhost:3000/', { autoConnect: false });
+const socket = io('http://localhost:3000/', { transports: ['websocket', 'polling'], autoConnect: false });
 
 type SocketOnParams = Parameters<typeof socket.on>;
 type SocketOnAnyParams = Parameters<typeof socket.onAny>;
