@@ -2,10 +2,13 @@ import type { Socket } from 'socket.io-client';
 import { io } from 'socket.io-client';
 import { onDestroy } from 'svelte';
 
-const socket = io('http://localhost:3000/', { transports: ['websocket', 'polling'], autoConnect: false });
+const socket = io('http://localhost:3000/', {
+	transports: ['websocket', 'polling'],
+	autoConnect: false,
+});
 
-type SocketOnParams = Parameters<typeof socket.on>;
-type SocketOnAnyParams = Parameters<typeof socket.onAny>;
+type SocketOnParams = Parameters<typeof Socket['prototype']['on']>;
+type SocketOnAnyParams = Parameters<typeof Socket['prototype']['onAny']>;
 
 type SocketOnFunction = {
 	key: 'on';
@@ -31,6 +34,7 @@ export function getIO(): Socket {
 				socket.offAny(...socketListener.arguments);
 			}
 		});
+
 		socket.disconnect();
 	});
 
