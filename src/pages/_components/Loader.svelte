@@ -6,14 +6,18 @@
 
 	export { classes as class };
 
-	export let size: CSS.Properties['width'] = '2rem';
+	export let small: boolean = false;
+	export let type: string = 'border';
+
+	export let size: CSS.Properties['width'] = `${small ? '1.3' : '2'}rem`;
 	export let promise: Promise<unknown>;
 	export let doHide: boolean = false;
 	export let name: string = Date.now().toString();
 
-	promise.then(() => (isDone = true)).catch(() => {});
+	promise.catch(() => {}).then(() => (isDone = true));
 
 	let isDone = false;
+	$: isHidden = doHide && isDone;
 
 	type LoaderPopoverProps = Popover['$$prop_def'];
 
@@ -33,9 +37,9 @@
 	};
 </script>
 
-<div class="align-self-center {classes}" hidden={doHide && isDone}>
+<div class="{isHidden ? '' : 'd-flex '}align-self-center align-items-center {classes}" class:d-none={isHidden}>
 	{#await promise}
-		<Spinner />
+		<Spinner {size} {type} class={small ? `spinner-${type}-sm` : ''} />
 	{:then}
 		<img
 			id={`loader-success-${name}`}
@@ -43,7 +47,7 @@
 			style="width: {size};"
 			src="./images/check.svg"
 			alt="Succès"
-		/>{#if popoverSuccessProps}
+		/>{#if popoverSuccessOptions && popoverSuccessProps}
 			<Popover {...popoverSuccessProps}>
 				<slot name="popover-success-content" />
 			</Popover>
@@ -55,7 +59,7 @@
 			style="width: {size};"
 			src="./images/alert-octagon.svg"
 			alt="Avertissement"
-		/>{#if popoverFailureProps}
+		/>{#if popoverFailureOptions && popoverFailureProps}
 			<Popover {...popoverFailureProps}>
 				<slot name="popover-failure-content" />
 			</Popover>
