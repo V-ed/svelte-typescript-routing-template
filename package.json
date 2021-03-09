@@ -1,4 +1,10 @@
 {
+  "name": "snowpack-svelte-routing-template",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Guillaume Marcoux",
+  "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "routify -c dev:snowpack",
     "dev:open": "routify -c dev:snowpack-open",
