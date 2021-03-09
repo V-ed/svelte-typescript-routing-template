@@ -6,6 +6,7 @@
 	import Message from './_component/Message.svelte';
 	import { onMountPromise } from '$/svelteutils';
 	import delayer from 'minimum-delayer';
+	import { get, post } from '$/network';
 
 	let username: string;
 	let message: string;
@@ -17,29 +18,28 @@
 	const socket = getIO();
 
 	socket.on('send_message', ({ user, message }: { user: { username: string }; message: string }) => {
-		console.log(username, message);
 		messages = [...messages, { user, message }];
 	});
 
-	function handleSend(e: Event) {
+	async function handleSend(e: Event) {
 		e.preventDefault();
 
 		const object = { username, message };
-		console.log('emitting object', object);
 
-		socket.emit('send_message', object);
+		// socket.emit('send_message', object);
+		await post('http://localhost:3000/messages', { body: object });
 
 		message = '';
 	}
 
-	const request = fetch('http://localhost:3000/messages');
+	const request = get('http://localhost:3000/messages');
 
 	const promise = onMountPromise(async () => {
-		const response = await delayer(() => request, 1000);
+		const response = await delayer(() => request, 250);
 
 		const newMessages = await response.value?.json();
 
-		messages = [...messages, ...newMessages];
+		messages = [...newMessages];
 	});
 </script>
 
