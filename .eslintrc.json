@@ -20,6 +20,7 @@
 		"node": true,
 		"jest": true
 	},
+	"ignorePatterns": ["build"],
 	"rules": {
 		"no-trailing-spaces": ["error", { "skipBlankLines": true }],
 		"semi": ["error", "always"],
