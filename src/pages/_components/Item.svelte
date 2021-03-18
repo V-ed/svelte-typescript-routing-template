@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { Button } from 'sveltestrap';
-	import Loader from './Loader.svelte';
+	import Loader from '$/components/Loader.svelte';
 
 	export let name: string;
 	export let count: number = 0;
@@ -11,16 +10,18 @@
 	export let promise: Promise<void> = new Promise((resolve, reject) => setTimeout(resolve, 2000));
 </script>
 
-<p class="item w-100 d-flex justify-content-between">
+<div class="flex flex-col sm:flex-row items-center mb-5">
 	<span>Item : {name}, count : {count}</span>
-	<Button color="primary" disabled={isDone} on:click={() => count++}>Count Up pls</Button>
-	<Loader {promise}>
-		<span slot="popover-success-content">Test</span>
-	</Loader>
-</p>
-
-<style>
-	.item {
-		display: flex;
-	}
-</style>
+	<button class="w-full sm:w-auto mt-2 sm:mt-0 button-blue py-2 px-4 mx-0 sm:mx-4" disabled={isDone} on:click={() => count++}>
+		Count up!
+	</button>
+	<div class="flex mt-2 sm:mt-0">
+		<Loader {promise} />
+		<Loader
+			promise={promise.then(() => {
+				throw 'rip';
+			})}
+			class="ml-2"
+		/>
+	</div>
+</div>

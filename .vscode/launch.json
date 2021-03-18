@@ -5,12 +5,22 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Launch Edge Session",
-			"type": "edge",
+			"name": "Launch Edge",
 			"request": "launch",
-			"url": "localhost:8080",
-			"timeout": 20000,
-			"webRoot": "${workspaceFolder}"
+			"type": "pwa-msedge",
+			"url": "http://localhost:5000",
+			"webRoot": "${workspaceFolder}/src",
+			"cleanUp": "onlyTab",
+			"sourceMaps": true,
+			"preLaunchTask": "vite: start",
+			"postDebugTask": "Terminate All Tasks",
+			"userDataDir": false,
+			"runtimeArgs": [
+				"--profile-directory=debugprofile"
+			],
+			"skipFiles": [
+				"<node_internals>/**"
+			]
 		},
 	]
 }

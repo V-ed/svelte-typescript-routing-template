@@ -22,9 +22,8 @@
 	},
 	"[svelte]": {
 		"editor.defaultFormatter": "svelte.svelte-vscode",
-		"editor.formatOnSave": true
+		"editor.formatOnSave": true,
 	},
-	"css.styleSheets": [
-		"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	]
+	"css.validate": false,
+	"svelte.plugin.css.diagnostics.enable": false,
 }

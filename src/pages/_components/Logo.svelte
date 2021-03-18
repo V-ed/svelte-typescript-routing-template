@@ -1,10 +1,8 @@
-<img src="./images/logo.svg" class="app-logo" alt="logo" />
+<img src="./images/logo.svg" class="app-logo h-72" alt="logo" />
 
 <style>
 	.app-logo {
-		height: 36vmin;
 		pointer-events: none;
-		margin-bottom: 3rem;
 		animation: App-logo-pulse infinite 1.6s ease-in-out alternate;
 	}
 
@@ -13,7 +11,7 @@
 			transform: scale(1);
 		}
 		to {
-			transform: scale(1.06);
+			transform: scale(0.94);
 		}
 	}
 </style>

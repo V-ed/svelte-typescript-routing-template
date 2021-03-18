@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { Container } from 'sveltestrap';
-	import Navbar from './_components/Navbar.svelte';
+	import Navbar from '$/components/nav/Navbar.svelte';
 	import { metatags, page } from '@roxi/routify';
 	import { capitalize } from '$/utils';
 
@@ -10,6 +9,6 @@
 
 <Navbar />
 
-<Container class="d-flex flex-column align-items-center">
+<div class="container mx-auto flex flex-col">
 	<slot />
-</Container>
+</div>

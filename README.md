@@ -1,24 +1,49 @@
-# New Project
+# Svelte Routify WindiCSS Vite
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+A starter template for Svelte Application with Typescript, uses Routify file-based router, WindiCSS to compile TailwindCSS and Vite.
 
-## Available Scripts
+[Svelte](https://svelte.dev)  
+[Routify](https://routify.dev)  
+[Vite](https://vitejs.dev)  
+[WindiCSS](https://windicss.netlify.app)  
+[TypeScript](https://www.typescriptlang.org)
 
-### npm start
+Kudos to all the respective authors, special thanks to [@jakobrosenberg](https://github.com/jakobrosenberg) and [@dominikg](https://github.com/dominikg).
 
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
+## Install
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+```
+git clone git@github.com:reepolee/svelte-routify-windi-vite.git best-dx
+cd best-dx
+npm i
+npm run dev
+```
 
-### npm run build
+## SSG
 
-Builds a static copy of your site to the `build/` folder.
-Your app is ready to be deployed!
+For SSG you can use [Spank](https://github.com/roxiness/spank):
+```
+npm run build
+npx spank
+```
 
-**For the best production performance:** Add a build bundler plugin like [@snowpack/plugin-webpack](https://github.com/snowpackjs/snowpack/tree/main/plugins/plugin-webpack) or [snowpack-plugin-rollup-bundle](https://github.com/ParamagicDev/snowpack-plugin-rollup-bundle) to your `snowpack.config.json` config file.
+Ignore error messages about deleting temp files on Windows.
 
-### Q: What about Eject?
+`dist` folder now contains predrendered pages. It renders pages automatically from Routify config. To serve, just run
+```
+npx spassr
+```
 
-No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
+Your web app is now served at port 5000 on localhost.
+
+Upload `dist` to any web server or JAMstack service like Netlify, Vercel or Cloudflare and you're good to go.
+
+## VS Code IntelliSense.
+
+Install the official WindiCSS VS Code plugin for better experience.
+
+[WindiCSS Extension](https://marketplace.visualstudio.com/items?itemName=voorjaar.windicss-intellisense)
+
+## WORK IN PROGRESS
+
+Please mind this is an **experimental** template, based on pre-production versions of ViteJS and WindiCSS. It was born out of frustration with slow development experience of other bundlers and compilers, but as technology changes, I might change my focus away from any of used packages.

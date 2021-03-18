@@ -2,8 +2,10 @@
 	import Logo from './_components/Logo.svelte';
 	import Counter from './_components/Counter.svelte';
 	import Item from './_components/Item.svelte';
-	import { Input, Form, FormGroup, Label, Col } from 'sveltestrap';
-	import { Popover } from 'sveltestrap';
+	import { url } from '@roxi/routify';
+	import Loader from '$/components/Loader.svelte';
+	import ThreeDots from '$/components/spinners/ThreeDots.svelte';
+	import TailSpin from '$/components/spinners/TailSpin.svelte';
 
 	export let name: string = 'Banana';
 
@@ -12,32 +14,47 @@
 		{ name: 'Item 2', done: false, count: 0 },
 		{ name: 'Item 3', done: false, count: 0 },
 	];
-
-	// console.log(import.meta.env);
 </script>
 
 <!-- routify:options title="Home" -->
 
-<p>Hello {name}!</p>
-
-<Form class="w-100">
-	<FormGroup row>
-		<Label for="test-input" sm="4" class="col-form-label">This is a label</Label>
-		<Col sm="8" class="d-flex align-items-center">
-			<Input id="test-input" type="text" bind:value={name} />
-		</Col>
-	</FormGroup>
-</Form>
-
-<Logo />
-<Counter name="3" />
-
-<div class="my-5">
-	<span id="test-id">Hello World</span>
-	<Popover target="test-id">Test</Popover>
+<div class="self-center pb-5">
+	<a href={$url('#teal')} class="text-blue-500 hover:underline">teal</a>
+	<a href={$url('#red')} class="text-blue-500 hover:underline">red</a>
+	<a href={$url('#yellow')} class="text-blue-500 hover:underline">yellow</a>
+	<a href={$url('#blue')} class="text-blue-500 hover:underline">blue</a>
+	<a href={$url('#gray')} class="text-blue-500 hover:underline">gray</a>
 </div>
 
-<div class="w-100">
+<p class="mb-5 self-center">Hello {name}!</p>
+
+<form class="mb-5 self-center">
+	<label for="name" class="tw">Label for name</label>
+	<input name="name" type="text" class="tw" bind:value={name} />
+</form>
+
+<div class="mb-5 flex justify-center">
+	<Logo />
+</div>
+
+<div class="mb-5 self-center">
+	<Counter name="3" />
+</div>
+
+<div class="mb-5 self-center">
+	<button class="flex button-blue py-2 px-4 rounded-md">
+		<span>This is my button</span>
+		<Loader doHide class="ml-2" promise={new Promise((resolve, reject) => setTimeout(resolve, 10000))}>
+			<TailSpin />
+		</Loader>
+	</button>
+</div>
+
+<div class="mb-5 self-center h-4">
+	<ThreeDots />
+</div>
+
+<div class="self-center">
 	{#each items as item, index (item)}
 		{#if index == 0 || items[index - 1].done}
 			<Item name={item.name} bind:count={item.count} bind:isDone={item.done} />
@@ -45,8 +62,16 @@
 	{/each}
 </div>
 
-<p class="d-flex flex-column">
+<div class="mb-5 self-center flex flex-col">
 	{#each items as { count }, index}
 		<span>Count {index + 1} : {count}</span>
 	{/each}
-</p>
+</div>
+
+<div class="App">
+	<section id="teal" class="bg-teal-400 h-96" />
+	<section id="red" class="bg-red-400 h-96" />
+	<section id="yellow" class="bg-yellow-400 h-96" />
+	<section id="blue" class="bg-blue-400 h-96" />
+	<section id="gray" class="bg-gray-400 h-96" />
+</div>

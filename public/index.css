@@ -1,9 +1,0 @@
-/* Add CSS styles here! */
-body {
-  font-family: sans-serif;
-  background-color: darkgray !important;
-}
-
-.btn:disabled {
-  cursor: not-allowed;
-}
