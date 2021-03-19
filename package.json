@@ -12,7 +12,7 @@
     "dev:vite": "vite",
     "serve:vite": "vite preview",
     "open": "start http://localhost:3000",
-    "validate": "svelte-check",
+    "validate": "svelte-check --diagnostic-sources \"js,svelte\"",
     "sirv:preview": "npx -p sirv-cli sirv dist -s -p 5004"
   },
   "devDependencies": {
