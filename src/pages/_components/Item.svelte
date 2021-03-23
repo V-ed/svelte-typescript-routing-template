@@ -1,3 +1,9 @@
+<!--
+	@component
+	Here's some doc for the Item Component.
+	
+	***Sweet!***
+-->
 <script lang="ts">
 	import Loader from '$/components/Loader.svelte';
 
@@ -12,9 +18,7 @@
 
 <div class="flex flex-col sm:flex-row items-center mb-5">
 	<span>Item : {name}, count : {count}</span>
-	<button class="w-full sm:w-auto mt-2 sm:mt-0 button-blue py-2 px-4 mx-0 sm:mx-4" disabled={isDone} on:click={() => count++}>
-		Count up!
-	</button>
+	<button class="mt-2 sm:mt-0 button-blue py-2 px-4 mx-0 sm:mx-4" disabled={isDone} on:click={() => count++}> Count up! </button>
 	<div class="flex mt-2 sm:mt-0">
 		<Loader {promise} />
 		<Loader
@@ -25,3 +29,9 @@
 		/>
 	</div>
 </div>
+
+<style>
+	button {
+		@apply w-full sm:(w-auto);
+	}
+</style>

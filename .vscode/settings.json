@@ -24,6 +24,12 @@
 		"editor.defaultFormatter": "svelte.svelte-vscode",
 		"editor.formatOnSave": true,
 	},
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true,
+	},
 	"css.validate": false,
+	"less.validate": false,
+	"scss.validate": false,
 	"svelte.plugin.css.diagnostics.enable": false,
 }

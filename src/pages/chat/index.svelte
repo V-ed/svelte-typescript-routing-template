@@ -47,7 +47,7 @@
 
 <div class="block border p-3">
 	{#await promise}
-		<div class="text-center">
+		<div class="flex justify-center">
 			<span>Loading chat service...</span>
 			<Loader {promise} class="ml-3" />
 		</div>
@@ -63,9 +63,8 @@
 		{/if}
 		<Form on:send={handleSend} bind:message={formMessage} />
 	{:catch error}
-		<div class="text-center">
-			<span>pls </span>
-			<span class="text-red-600 font-bold">{error}</span>
+		<div class="flex justify-center">
+			<span>pls <span class="text-red-600 font-bold">{error}</span></span>
 		</div>
 	{/await}
 </div>

@@ -1,8 +1,8 @@
 import svelte from '@svitejs/vite-plugin-svelte';
 import { resolve } from 'path';
-import { sveltePreprocess } from 'svelte-preprocess/dist/autoProcess';
 import { defineConfig, loadEnv } from 'vite';
-import WindiCSS from 'vite-plugin-windicss';
+import VitePluginWindicss from 'vite-plugin-windicss';
+import { createSveltePreprocessHandling } from './svelte.config';
 
 export default defineConfig(({ mode }) => {
 	Object.assign(process.env, loadEnv(mode, process.cwd()));
@@ -34,11 +34,11 @@ export default defineConfig(({ mode }) => {
 			},
 		},
 		plugins: [
-			WindiCSS(),
+			VitePluginWindicss(),
 			svelte({
-				preprocess: sveltePreprocess(),
+				// preprocess: sveltePreprocess(),
+				preprocess: createSveltePreprocessHandling(),
 				hot: !isProduction,
-				emitCss: true,
 				compilerOptions: {
 					dev: !isProduction,
 				},
