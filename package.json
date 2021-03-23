@@ -13,7 +13,8 @@
     "serve:vite": "vite preview",
     "open": "start http://localhost:3000",
     "validate": "svelte-check --diagnostic-sources \"js,svelte\"",
-    "sirv:preview": "npx -p sirv-cli sirv dist -s -p 5004"
+    "sirv:preview": "npx -p sirv-cli sirv dist -s -p 5004",
+    "lint": "stylelint \"**/*.{css,svelte,html}\""
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.0",

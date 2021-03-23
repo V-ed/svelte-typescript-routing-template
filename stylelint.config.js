@@ -10,5 +10,7 @@ module.exports = {
 		indentation: ['tab'],
 		'declaration-block-trailing-semicolon': null,
 		'no-descending-specificity': null,
+		'rule-empty-line-before': ['always', { ignore: ['inside-block'] }],
 	},
+	ignoreFiles: ['dist/**/*', 'node_modules/**/*'],
 };
