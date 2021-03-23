@@ -4,12 +4,14 @@ import { defineConfig, loadEnv } from 'vite';
 import VitePluginWindicss from 'vite-plugin-windicss';
 import { createSveltePreprocessHandling } from './svelte.config';
 
+const DEFAULT_PORT = 5000;
+
 export default defineConfig(({ mode }) => {
 	Object.assign(process.env, loadEnv(mode, process.cwd()));
 
 	const isProduction = mode === 'production';
 
-	const port: number = parseInt(process.env.PORT) || 5000;
+	const port: number = parseInt(process.env.PORT) || DEFAULT_PORT;
 
 	const targets = ['es2020'];
 
