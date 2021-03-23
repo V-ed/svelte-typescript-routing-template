@@ -38,7 +38,6 @@ export default defineConfig(({ mode }) => {
 		plugins: [
 			VitePluginWindicss(),
 			svelte({
-				// preprocess: sveltePreprocess(),
 				preprocess: createSveltePreprocessHandling(),
 				hot: !isProduction,
 				compilerOptions: {

@@ -20,7 +20,7 @@
 		"node": true,
 		"jest": true
 	},
-	"ignorePatterns": ["build"],
+	"ignorePatterns": ["build", "stylelint.config.js"],
 	"rules": {
 		"no-trailing-spaces": ["error", { "skipBlankLines": true }],
 		"semi": ["error", "always"],
