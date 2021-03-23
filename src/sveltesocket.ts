@@ -7,8 +7,8 @@ const socket = io('http://localhost:3000/', {
 	autoConnect: false,
 });
 
-type SocketOnParams = Parameters<typeof Socket['prototype']['on']>;
-type SocketOnAnyParams = Parameters<typeof Socket['prototype']['onAny']>;
+type SocketOnParams = Parameters<typeof socket['on']>;
+type SocketOnAnyParams = Parameters<typeof socket['onAny']>;
 
 type SocketOnFunction = {
 	key: 'on';
