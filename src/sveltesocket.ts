@@ -7,6 +7,8 @@ const socket = io('http://localhost:3000/', {
 	autoConnect: false,
 });
 
+let componentHandlers: (SocketOnFunction | SocketOnAnyFunction)[][] = [];
+
 type SocketOnParams = Parameters<typeof socket['on']>;
 type SocketOnAnyParams = Parameters<typeof socket['onAny']>;
 
@@ -26,6 +28,8 @@ export function getIO(): Socket {
 
 	let socketListeners: (SocketOnFunction | SocketOnAnyFunction)[] = [];
 
+	componentHandlers.push(socketListeners);
+
 	onDestroy(() => {
 		socketListeners.forEach((socketListener) => {
 			if (socketListener.key == 'on') {
@@ -35,7 +39,11 @@ export function getIO(): Socket {
 			}
 		});
 
-		socket.disconnect();
+		componentHandlers = componentHandlers.filter((componentHandler) => componentHandler != socketListeners);
+
+		if (!componentHandlers.length) {
+			socket.disconnect();
+		}
 	});
 
 	return new Proxy(socket, {
