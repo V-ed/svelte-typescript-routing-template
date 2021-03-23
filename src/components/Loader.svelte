@@ -28,7 +28,7 @@
 		{:then}
 			<!-- Check Inline SVG -->
 			<svg
-				class="status-icon text-green-600"
+				class="bi bi-check min-h-full fill-current text-green-600"
 				{height}
 				viewBox="2.5 2.5 15 15"
 				preserveAspectRatio="xMidYMin slice"
@@ -43,7 +43,7 @@
 		{:catch}
 			<!-- Octagon Inline SVG -->
 			<svg
-				class="status-icon text-red-600"
+				class="bi bi-check min-h-full fill-current text-red-600"
 				{height}
 				viewBox="0 0 20 20"
 				preserveAspectRatio="xMidYMin slice"
@@ -60,9 +60,3 @@
 		{/await}
 	</div>
 {/if}
-
-<style>
-	.status-icon {
-		@apply bi bi-check min-h-full fill-current;
-	}
-</style>
