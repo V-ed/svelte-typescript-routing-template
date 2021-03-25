@@ -24,7 +24,7 @@
 	"rules": {
 		"no-trailing-spaces": ["error", { "skipBlankLines": true }],
 		"semi": ["error", "always"],
-		"array-bracket-newline": ["error", { "multiline": true, "minItems": 3 }],
+		"array-bracket-newline": ["error", { "multiline": true }],
 		"indent": ["error", "tab", { "VariableDeclarator": { "var": 2, "let": 2, "const": 3 }, "SwitchCase": 1 }],
 		"implicit-arrow-linebreak": ["error", "beside"],
 		"no-whitespace-before-property": "error",
@@ -65,7 +65,8 @@
 			"files": ["*.js"],
 			"rules": {
 				"@typescript-eslint/no-var-requires": "off",
-				"@typescript-eslint/no-magic-numbers": "off"
+				"@typescript-eslint/no-magic-numbers": "off",
+				"@typescript-eslint/ban-ts-comment": "off"
 			}
 		}
 	]
