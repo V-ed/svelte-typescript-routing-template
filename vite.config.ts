@@ -1,8 +1,8 @@
 import VitePluginSvelte from '@sveltejs/vite-plugin-svelte';
-import { resolve } from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import { Options as VitePWAOptions, VitePWA } from 'vite-plugin-pwa';
 import VitePluginWindicss from 'vite-plugin-windicss';
+import tsconfigPaths from 'vite-tsconfig-paths';
 import { preprocess as sveltePreprocess } from './svelte.config';
 
 const DEFAULT_PORT = 5000;
@@ -60,10 +60,6 @@ export default defineConfig(({ mode }) => {
 		},
 		resolve: {
 			dedupe: ['@roxi/routify'],
-			alias: {
-				svelte: resolve(__dirname, 'node_modules/svelte'),
-				$: resolve(__dirname, './src'),
-			},
 		},
 		plugins: [
 			VitePWA({
@@ -78,7 +74,7 @@ export default defineConfig(({ mode }) => {
 					dev: !isProduction,
 				},
 			}),
-			// tsconfigPaths(),
+			tsconfigPaths(),
 		],
 	};
 });
