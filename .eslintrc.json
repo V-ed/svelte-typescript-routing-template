@@ -56,7 +56,7 @@
 	},
 	"overrides": [
 		{
-			"files": "pwa.config.ts",
+			"files": "vite.config.ts",
 			"rules": {
 				"camelcase": "off"
 			}
