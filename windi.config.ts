@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite-plugin-windicss';
-import tailwindForms from 'windicss/plugin/forms';
+// import tailwindForms from 'windicss/plugin/forms';
 
 export default defineConfig({
 	darkMode: 'media',
@@ -22,5 +22,5 @@ export default defineConfig({
 		// 	},
 		// },
 	},
-	plugins: [tailwindForms],
+	// plugins: [tailwindForms],
 });

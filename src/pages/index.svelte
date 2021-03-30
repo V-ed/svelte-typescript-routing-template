@@ -6,6 +6,7 @@
 	import Loader from '$/components/Loader.svelte';
 	import ThreeDots from '$/components/spinners/ThreeDots.svelte';
 	import TailSpin from '$/components/spinners/TailSpin.svelte';
+	import { TextField } from 'svelte-materialify/src';
 
 	export let name: string = 'Banana';
 
@@ -19,18 +20,19 @@
 <!-- routify:options title="Home" -->
 
 <div class="self-center pb-5">
-	<a href={$url('#teal')} class="text-blue-500 hover:underline">teal</a>
-	<a href={$url('#red')} class="text-blue-500 hover:underline">red</a>
-	<a href={$url('#yellow')} class="text-blue-500 hover:underline">yellow</a>
-	<a href={$url('#blue')} class="text-blue-500 hover:underline">blue</a>
-	<a href={$url('#gray')} class="text-blue-500 hover:underline">gray</a>
+	<a href={$url('#teal')} class="hover:underline">teal</a>
+	<a href={$url('#red')} class="hover:underline">red</a>
+	<a href={$url('#yellow')} class="hover:underline">yellow</a>
+	<a href={$url('#blue')} class="hover:underline">blue</a>
+	<a href={$url('#gray')} class="hover:underline">gray</a>
 </div>
 
 <p class="mb-5 self-center">Hello {name}!</p>
 
 <form class="mb-5 self-center">
-	<label for="name" class="tw">Label for name</label>
-	<input name="name" type="text" class="tw" bind:value={name} />
+	<!-- <label for="name" class="tw">Label for name</label>
+	<input name="name" type="text" class="tw" bind:value={name} /> -->
+	<TextField bind:value={name}>Random Name</TextField>
 </form>
 
 <div class="mb-5 flex justify-center">
@@ -75,3 +77,9 @@
 	<section id="blue" class="bg-blue-400 h-96" />
 	<section id="gray" class="bg-gray-400 h-96" />
 </div>
+
+<style>
+	/* a {
+		@apply text-blue-500 !important;
+	} */
+</style>

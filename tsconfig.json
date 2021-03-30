@@ -16,8 +16,6 @@
 			]
 		},
 		
-		"checkJs": true,
-		
 		"sourceMap": true,
 		"resolveJsonModule": true,
 		"esModuleInterop": true,

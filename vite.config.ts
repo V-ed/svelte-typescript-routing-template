@@ -56,7 +56,7 @@ export default defineConfig(({ mode }) => {
 			port: port,
 		},
 		optimizeDeps: {
-			exclude: ['@roxi/routify'],
+			exclude: ['@roxi/routify', 'svelte', 'svelte-materialify'],
 		},
 		resolve: {
 			dedupe: ['@roxi/routify'],
@@ -74,7 +74,9 @@ export default defineConfig(({ mode }) => {
 					dev: !isProduction,
 				},
 			}),
-			tsconfigPaths(),
+			tsconfigPaths({
+				loose: true,
+			}),
 		],
 	};
 });

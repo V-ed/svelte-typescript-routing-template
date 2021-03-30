@@ -1,13 +1,19 @@
-const { sveltePreprocess } = require('svelte-preprocess/dist/autoProcess');
-const { preprocess: windicssPreprocess } = require('svelte-windicss-preprocess');
+/** @type {import('svelte-preprocess').default} */
+// @ts-ignore
+const sveltePreprocess = require('svelte-preprocess');
+// const { preprocess: windicssPreprocess } = require('svelte-windicss-preprocess');
 
 function createSveltePreprocessHandling() {
 	return [
-		windicssPreprocess({
-			compile: false,
-			prefix: 'windi-',
+		sveltePreprocess({
+			scss: {
+				includePaths: ['theme'],
+			},
 		}),
-		sveltePreprocess(),
+		// windicssPreprocess({
+		// 	compile: false,
+		// 	prefix: 'windi-',
+		// }),
 	];
 }
 
