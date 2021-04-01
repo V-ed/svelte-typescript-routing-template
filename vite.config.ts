@@ -74,7 +74,9 @@ export default defineConfig(({ mode }) => {
 					dev: !isProduction,
 				},
 			}),
-			tsconfigPaths(),
+			tsconfigPaths({
+				loose: true,
+			}),
 		],
 	};
 });
