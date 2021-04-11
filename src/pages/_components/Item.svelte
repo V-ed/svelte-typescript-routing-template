@@ -18,7 +18,9 @@
 
 <div class="flex flex-col sm:flex-row items-center mb-5">
 	<span>Item : {name}, count : {count}</span>
-	<button class="mt-2 sm:mt-0 button-blue py-2 px-4 mx-0 sm:mx-4" disabled={isDone} on:click={() => count++}> Count up! </button>
+	<button class="sm:(w-auto mx-4 mt-0) w-full mx-0 mt-2 button-blue py-2 px-4" disabled={isDone} on:click={() => count++}>
+		Count up!
+	</button>
 	<div class="flex mt-2 sm:mt-0">
 		<Loader {promise} />
 		<Loader
@@ -29,9 +31,3 @@
 		/>
 	</div>
 </div>
-
-<style>
-	button {
-		@apply w-full sm:(w-auto);
-	}
-</style>

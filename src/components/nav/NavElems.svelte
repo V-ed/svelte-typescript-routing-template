@@ -19,6 +19,6 @@
 
 <style>
 	.nav-link {
-		@apply capitalize;
+		@apply capitalize hover:text-white;
 	}
 </style>
