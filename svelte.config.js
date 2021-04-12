@@ -1,17 +1,15 @@
 const { sveltePreprocess } = require('svelte-preprocess/dist/autoProcess');
 const { preprocess: windicssPreprocess } = require('svelte-windicss-preprocess');
 
-function createSveltePreprocessHandling() {
-	return [
-		windicssPreprocess({
-			compile: false,
-			prefix: 'windi-',
-		}),
-		sveltePreprocess(),
-	];
-}
+const preprocessors = {
+	svelte: sveltePreprocess(),
+	windicss: windicssPreprocess({
+		compile: false,
+		prefix: 'windi-',
+	}),
+};
 
 module.exports = {
-	preprocess: createSveltePreprocessHandling(),
-	createSveltePreprocessHandling,
+	preprocess: Object.values(preprocessors),
+	preprocessors,
 };
