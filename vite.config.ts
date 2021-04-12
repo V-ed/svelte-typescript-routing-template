@@ -1,4 +1,5 @@
 import VitePluginSvelte from '@sveltejs/vite-plugin-svelte';
+import sveltePreprocess from 'svelte-preprocess';
 import { defineConfig, loadEnv } from 'vite';
 import { Options as VitePWAOptions, VitePWA as VitePluginPWA } from 'vite-plugin-pwa';
 import VitePluginWindicss from 'vite-plugin-windicss';
@@ -66,9 +67,7 @@ export default defineConfig(({ mode }) => {
 			VitePluginWindicss(),
 			VitePluginSvelte({
 				hot: !isProduction,
-				compilerOptions: {
-					dev: !isProduction,
-				},
+				preprocess: [sveltePreprocess()],
 			}),
 			VitePluginTsconfigPaths({
 				loose: true,

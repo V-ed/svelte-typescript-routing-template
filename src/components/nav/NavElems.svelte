@@ -7,12 +7,7 @@
 </script>
 
 {#each formattedNodes as { path, title, isActive }}
-	<a
-		href={$url(path)}
-		class="nav-link {isActive
-			? 'text-white bg-gray-900'
-			: 'text-gray-300 hover:(bg-gray-700 text-white)'} px-3 py-2 block rounded-md text-base sm:text-sm font-medium my-auto"
-	>
+	<a href={$url(path)} class="nav-link px-3 py-2 block rounded-md text-base sm:text-sm font-medium my-auto" class:active={isActive}>
 		{title}
 	</a>
 {/each}
@@ -20,5 +15,13 @@
 <style>
 	.nav-link {
 		@apply capitalize hover:text-white;
+	}
+
+	a.active {
+		@apply text-white bg-gray-900;
+	}
+
+	a:not(.active) {
+		@apply text-gray-300 hover:(bg-gray-700 text-white);
 	}
 </style>
