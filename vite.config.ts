@@ -1,8 +1,8 @@
 import VitePluginSvelte from '@sveltejs/vite-plugin-svelte';
 import { defineConfig, loadEnv } from 'vite';
-import { Options as VitePWAOptions, VitePWA } from 'vite-plugin-pwa';
+import { Options as VitePWAOptions, VitePWA as VitePluginPWA } from 'vite-plugin-pwa';
 import VitePluginWindicss from 'vite-plugin-windicss';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import VitePluginTsconfigPaths from 'vite-tsconfig-paths';
 
 const DEFAULT_PORT = 5000;
 
@@ -59,7 +59,7 @@ export default defineConfig(({ mode }) => {
 			dedupe: ['@roxi/routify'],
 		},
 		plugins: [
-			VitePWA({
+			VitePluginPWA({
 				minify: !isProduction,
 				manifest: manifestOptions,
 			}),
@@ -70,7 +70,7 @@ export default defineConfig(({ mode }) => {
 					dev: !isProduction,
 				},
 			}),
-			tsconfigPaths({
+			VitePluginTsconfigPaths({
 				loose: true,
 			}),
 		],
