@@ -1,23 +1,18 @@
 /** @type {import('svelte-preprocess').default} */
 // @ts-ignore
 const sveltePreprocess = require('svelte-preprocess');
-// const { preprocess: windicssPreprocess } = require('svelte-windicss-preprocess');
+const { preprocess: windicssPreprocess } = require('svelte-windicss-preprocess');
 
-function createSveltePreprocessHandling() {
-	return [
-		sveltePreprocess({
-			scss: {
-				includePaths: ['theme'],
-			},
-		}),
-		// windicssPreprocess({
-		// 	compile: false,
-		// 	prefix: 'windi-',
-		// }),
-	];
-}
+const preprocessors = {
+	svelte: sveltePreprocess({
+		scss: {
+			includePaths: ['theme'],
+		},
+	}),
+	windicss: windicssPreprocess(),
+};
 
 module.exports = {
-	preprocess: createSveltePreprocessHandling(),
-	createSveltePreprocessHandling,
+	preprocess: Object.values(preprocessors),
+	preprocessors,
 };
