@@ -1,1 +1,3 @@
-<div class="h-screen grid place-items-center text-3xl">Sorry, dead end!</div>
+<!-- routify:options title="Oh no..." -->
+
+<div class="m-auto text-3xl">Sorry, dead end!</div>

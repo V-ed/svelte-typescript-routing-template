@@ -30,8 +30,6 @@
 <p class="mb-5 self-center">Hello {name}!</p>
 
 <form class="mb-5 self-center">
-	<!-- <label for="name" class="tw">Label for name</label>
-	<input name="name" type="text" class="tw" bind:value={name} /> -->
 	<TextField bind:value={name}>Random Name</TextField>
 </form>
 

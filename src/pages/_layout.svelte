@@ -2,23 +2,19 @@
 	import Navbar from '$/components/nav/Navbar.svelte';
 	import { metatags, page } from '@roxi/routify';
 	import { capitalize } from '$/utils';
-	import { MaterialApp } from 'svelte-materialify';
+	import { MaterialAppMin } from 'svelte-materialify/src';
+	import { themeStore } from '$/stores';
 
 	metatags.template('title', (title: string) => `${title ? `${title} - ` : ''}Template`);
 	$: metatags.title = capitalize($page.title);
-
-	let theme: 'light' | 'dark' | undefined = 'dark';
-
-	function toggleTheme() {
-		if (theme === 'light') theme = 'dark';
-		else theme = 'light';
-	}
 </script>
 
-<MaterialApp {theme}>
-	<Navbar />
+<MaterialAppMin theme={$themeStore}>
+	<div class="flex flex-col" style="min-height: 100vh">
+		<Navbar />
 
-	<div class="container mx-auto flex flex-col">
-		<slot />
+		<div class="container mx-auto flex flex-col flex-grow">
+			<slot />
+		</div>
 	</div>
-</MaterialApp>
+</MaterialAppMin>
