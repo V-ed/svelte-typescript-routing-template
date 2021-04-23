@@ -10,14 +10,11 @@
 			"type": "pwa-msedge",
 			"url": "http://localhost:5000",
 			"webRoot": "${workspaceFolder}/src",
+			"timeout": 30000,
 			"cleanUp": "onlyTab",
 			"sourceMaps": true,
 			"preLaunchTask": "vite: start",
 			"postDebugTask": "Terminate All Tasks",
-			"userDataDir": false,
-			"runtimeArgs": [
-				"--profile-directory=debugprofile"
-			],
 			"skipFiles": [
 				"<node_internals>/**"
 			]
