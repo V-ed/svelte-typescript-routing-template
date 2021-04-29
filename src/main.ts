@@ -1,5 +1,6 @@
 import App from '$/App.svelte';
 import '$/style.css';
+import '$/tw-fixes.css';
 import HMR from '@roxi/routify/hmr';
 import 'virtual:windi.css';
 

@@ -3,7 +3,7 @@ import { defineConfig } from 'vite-plugin-windicss';
 
 export default defineConfig({
 	darkMode: 'media',
-	preflight: false,
+	// preflight: false,
 	theme: {
 		container: {
 			center: true,
