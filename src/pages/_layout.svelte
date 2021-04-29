@@ -2,7 +2,8 @@
 	import Navbar from '$/components/nav/Navbar.svelte';
 	import { metatags, page } from '@roxi/routify';
 	import { capitalize } from '$/utils';
-	import { MaterialAppMin } from 'svelte-materialify/src';
+	// import { MaterialAppMin } from 'svelte-materialify/src';
+	import MaterialAppMin from 'svelte-materialify/src/components/MaterialApp/MaterialAppMin.svelte';
 	import { themeStore } from '$/stores';
 
 	metatags.template('title', (title: string) => `${title ? `${title} - ` : ''}Template`);

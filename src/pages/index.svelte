@@ -6,7 +6,8 @@
 	import Loader from '$/components/Loader.svelte';
 	import ThreeDots from '$/components/spinners/ThreeDots.svelte';
 	import TailSpin from '$/components/spinners/TailSpin.svelte';
-	import { TextField } from 'svelte-materialify/src';
+	// import { TextField } from 'svelte-materialify/src';
+	import TextField from 'svelte-materialify/src/components/TextField/TextField.svelte';
 
 	export let name: string = 'Banana';
 

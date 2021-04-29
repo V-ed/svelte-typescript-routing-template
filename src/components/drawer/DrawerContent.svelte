@@ -1,5 +1,9 @@
 <script lang="ts">
-	import { List, ListGroup, ListItem, Icon } from 'svelte-materialify/src';
+	// import { List, ListGroup, ListItem, Icon } from 'svelte-materialify/src';
+	import List from 'svelte-materialify/src/components/List/List.svelte';
+	import ListGroup from 'svelte-materialify/src/components/List/ListGroup.svelte';
+	import ListItem from 'svelte-materialify/src/components/List/ListItem.svelte';
+	import Icon from 'svelte-materialify/src/components/Icon/Icon.svelte';
 	import { mdiHome, mdiCog, mdiChevronUp } from '@mdi/js';
 
 	let active: boolean = false;
