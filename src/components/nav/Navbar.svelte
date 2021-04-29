@@ -6,27 +6,17 @@
 	import Menu from 'svelte-materialify/src/components/Menu/Menu.svelte';
 	import ListItem from 'svelte-materialify/src/components/List/ListItem.svelte';
 	import Icon from 'svelte-materialify/src/components/Icon/Icon.svelte';
-	import NavigationDrawer from 'svelte-materialify/src/components/NavigationDrawer/NavigationDrawer.svelte';
-	import Overlay from 'svelte-materialify/src/components/Overlay/Overlay.svelte';
 	import { mdiMenu, mdiDotsVertical, mdiThemeLightDark } from '@mdi/js';
 	// import NavElems from './NavElems.svelte';
-	import DrawerContent from '../drawer/DrawerContent.svelte';
+	import Drawer from '../drawer/Drawer.svelte';
 	import { themeStore, isDrawerOpen } from '$/stores';
-
-	function toggleDrawer() {
-		isDrawerOpen.set(!$isDrawerOpen);
-	}
-
-	function toggleTheme() {
-		themeStore.toggle();
-	}
 </script>
 
 <!-- <NavElems nodes={$layout.children} /> -->
 
 <AppBar fixed class="w-screen sm:pr-3">
 	<div slot="icon">
-		<Button fab depressed on:click={toggleDrawer}>
+		<Button fab depressed on:click={isDrawerOpen.toggle}>
 			<Icon path={mdiMenu} />
 		</Button>
 	</div>
@@ -45,15 +35,12 @@
 		<ListItem>Item 2</ListItem>
 		<ListItem>Item 3</ListItem>
 	</Menu>
-	<Button fab depressed on:click={toggleTheme}>
+	<Button fab depressed on:click={themeStore.toggle}>
 		<Icon path={mdiThemeLightDark} />
 	</Button>
 </AppBar>
 
-<NavigationDrawer style="height: calc(100vh - var(--s-nav-clipped-height)); top: var(--s-nav-clipped-height)" fixed active={$isDrawerOpen}>
-	<DrawerContent />
-</NavigationDrawer>
-<Overlay active={$isDrawerOpen} on:click={toggleDrawer} index={1} />
+<Drawer />
 
 <div class="h-14" />
 
