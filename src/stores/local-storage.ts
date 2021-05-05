@@ -4,11 +4,11 @@ import { Updater, Writable, writable } from 'svelte/store';
 // Or browser (`import { browser } from "$app/env";`) in SvelteKit
 const client = true;
 
-type WritableLocalStore<T> = Writable<T>;
+type WritableLocalStorage<T> = Writable<T>;
 
 // Adapted from https://higsch.me/2019/06/22/2019-06-21-svelte-local-storage/
 // Transferred to typescript from https://svelte.dev/repl/7b4d6b448f8c4ed2b3d5a3c31260be2a?version=3.32.2
-export function localStorageStore<T>(key: string, initial: T): WritableLocalStore<T> {
+export function localStorageStore<T>(key: string, initial: T): WritableLocalStorage<T> {
 	const { set: setStore, update: updateStore, ...readableStore } = writable(initial, () => {
 		if (!client) return;
 
@@ -24,13 +24,13 @@ export function localStorageStore<T>(key: string, initial: T): WritableLocalStor
 
 	// Set both localStorage and this Svelte store
 	const set = (value: T) => {
-		setStore(value);
-
 		try {
 			localStorage.setItem(key, JSON.stringify(value));
 		} catch (error) {
 			console.error(`the \`${key}\` store's new value \`${value}\` could not be persisted to localStorage because of ${error}`);
 		}
+
+		setStore(value);
 	};
 
 	const update = (updater: Updater<T>) => {

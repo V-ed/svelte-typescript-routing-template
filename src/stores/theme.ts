@@ -1,4 +1,4 @@
-import { localStorageStore } from './local-store';
+import { localStorageStore } from './local-storage';
 import { makeToggleable, Toggleable } from './toggleable';
 
 const themeLocalStore = localStorageStore<'light' | 'dark'>('app-theme', 'dark');
