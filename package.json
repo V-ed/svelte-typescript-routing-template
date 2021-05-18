@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "routify -c dev:vite",
     "build": "routify -b && vite build",
-    "dev:vite": "vite",
+    "dev:vite": "vite --host",
     "serve:vite": "vite preview",
     "build:vite": "vite build",
     "validate": "npm-run-all validate:*",
@@ -21,35 +21,35 @@
   },
   "devDependencies": {
     "@mdi/js": "^5.9.55",
-    "@roxi/routify": "^2.15.1",
-    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.9",
+    "@roxi/routify": "^2.18.0",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.10",
     "@tsconfig/svelte": "^1.0.10",
-    "@typescript-eslint/eslint-plugin": "^4.22.1",
-    "@typescript-eslint/parser": "^4.22.1",
-    "eslint": "^7.25.0",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "eslint": "^7.26.0",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.2.13",
-    "sass": "^1.32.12",
+    "postcss": "^8.2.15",
+    "sass": "^1.32.13",
     "stylelint": "^13.13.1",
     "stylelint-config-css-modules": "^2.2.0",
     "stylelint-config-standard": "^22.0.0",
     "svelte": "^3.38.2",
-    "svelte-check": "^1.5.2",
+    "svelte-check": "^1.5.4",
     "svelte-materialify": "^0.3.10",
     "svelte-preprocess": "^4.7.3",
-    "svelte-windicss-preprocess": "^3.5.3",
+    "svelte-windicss-preprocess": "^4.0.3",
     "tslib": "^2.2.0",
     "typescript": "^4.2.4",
-    "vite": "^2.2.4",
+    "vite": "^2.3.3",
     "vite-plugin-pwa": "^0.7.3",
     "vite-plugin-windicss": "^0.15.10",
-    "vite-tsconfig-paths": "^3.3.10",
-    "windicss": "^2.5.14"
+    "vite-tsconfig-paths": "^3.3.11",
+    "windicss": "^3.0.6"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "minimum-delayer": "^0.1.0",
-    "socket.io-client": "^4.0.1"
+    "socket.io-client": "^4.1.2"
   },
   "routify": {
     "routifyDir": ".routify"

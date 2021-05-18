@@ -1,6 +1,6 @@
-import VitePluginSvelte from '@sveltejs/vite-plugin-svelte';
+import VitePluginSvelte, { PreprocessorGroup } from '@sveltejs/vite-plugin-svelte';
 import { defineConfig, loadEnv } from 'vite';
-import { Options as VitePWAOptions, VitePWA } from 'vite-plugin-pwa';
+import { Options as VitePWAOptions, VitePWA as VitePluginPWA } from 'vite-plugin-pwa';
 import VitePluginWindicss from 'vite-plugin-windicss';
 import VitePluginTsConfigPaths from 'vite-tsconfig-paths';
 import { preprocessors } from './svelte.config';
@@ -57,13 +57,13 @@ export default defineConfig(({ mode }) => {
 			dedupe: ['@roxi/routify'],
 		},
 		plugins: [
-			VitePWA({
+			VitePluginPWA({
 				minify: !isProduction,
 				manifest: manifestOptions,
 			}),
 			VitePluginWindicss(),
 			VitePluginSvelte({
-				preprocess: [preprocessors.svelte],
+				preprocess: [preprocessors.svelte as unknown as PreprocessorGroup],
 				hot: !isProduction,
 			}),
 			VitePluginTsConfigPaths({
