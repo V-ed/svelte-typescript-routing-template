@@ -1,6 +1,6 @@
-declare module 'svelte-materialify/src' {
-	export * from 'svelte-materialify';
-}
+// declare module 'svelte-materialify/src' {
+// 	export * from 'svelte-materialify';
+// }
 
 declare module 'svelte-materialify/src/components/Alert/Alert.svelte' {
 	export { Alert as default } from 'svelte-materialify';
