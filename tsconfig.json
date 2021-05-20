@@ -12,6 +12,7 @@
 		"baseUrl": ".",
 		"paths": {
 			"$/*": ["./src/*"],
+			"$gql": ["./src/graphql/@generated"]
 		},
 		
 		"sourceMap": true,
@@ -47,4 +48,7 @@
 		"src/**/*",
 		"@types"
 	],
+	"exclude": [
+		"src/graphql/@generated/**/*"
+	]
 }

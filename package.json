@@ -6,7 +6,8 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "routify -c dev:vite",
+    "dev": "npm-run-all -p generate:watch dev:no-gql",
+    "dev:no-gql": "routify -c dev:vite",
     "build": "routify -b && vite build",
     "dev:vite": "vite --host",
     "serve:vite": "vite preview",
@@ -17,9 +18,15 @@
     "preview": "npx -p sirv-cli sirv dist -s -p 5004",
     "lint": "npm-run-all lint:*",
     "lint:src": "eslint \"src/**/*.{t,j}s\"",
-    "lint:css": "stylelint \"**/*.{css,svelte,html}\""
+    "lint:css": "stylelint \"**/*.{css,svelte,html}\"",
+    "generate": "graphql-codegen --config codegen.yml",
+    "generate:watch": "graphql-codegen --config codegen.yml --watch"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "1.21.4",
+    "@graphql-codegen/typed-document-node": "^1.18.5",
+    "@graphql-codegen/typescript": "1.22.0",
+    "@graphql-codegen/typescript-operations": "^1.17.16",
     "@mdi/js": "^5.9.55",
     "@roxi/routify": "^2.18.0",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.10",
@@ -40,6 +47,7 @@
     "svelte-windicss-preprocess": "^4.0.3",
     "tslib": "^2.2.0",
     "typescript": "^4.2.4",
+    "urql": "^2.0.3",
     "vite": "^2.3.3",
     "vite-plugin-pwa": "^0.7.3",
     "vite-plugin-windicss": "^0.15.10",
@@ -47,9 +55,12 @@
     "windicss": "^3.0.6"
   },
   "dependencies": {
+    "@urql/svelte": "^1.2.2",
     "axios": "^0.21.1",
+    "graphql": "^15.5.0",
     "minimum-delayer": "^0.1.0",
-    "socket.io-client": "^4.1.2"
+    "socket.io-client": "^4.1.2",
+    "subscriptions-transport-ws": "^0.9.18"
   },
   "routify": {
     "routifyDir": ".routify"

@@ -4,7 +4,7 @@
 		"dbaeumer.vscode-eslint",
 		"esbenp.prettier-vscode",
 		"voorjaar.windicss-intellisense",
-		"bradlc.vscode-tailwindcss",
-		"stylelint.vscode-stylelint"
+		"stylelint.vscode-stylelint",
+		"graphql.vscode-graphql"
 	]
 }
