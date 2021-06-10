@@ -1,6 +1,6 @@
 import { onMount } from 'svelte';
 
-export function onMountPromise<T>(fn: () => PromiseLike<T>): Promise<T> {
+export function onMountPromise<T>(fn: () => PromiseLike<T> | T): Promise<T> {
 	return new Promise<T>((resolve, reject) => {
 		onMount(async () => {
 			try {
