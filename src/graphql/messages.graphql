@@ -12,7 +12,7 @@ query GetMessages {
 	}
 }
 
-subscription SubscribeNewMessages {
+subscription NewMessages {
 	messageAdded {
 		...ChatMessage
 	}

@@ -2,8 +2,8 @@
 <script lang="ts">
 	import { onMountPromise } from '$/svelteutils';
 	import { client } from '$/urql';
-	import type { ChatMessageFragment, SubscribeNewMessagesSubscription } from '$gql';
-	import { GetMessagesDocument, SubscribeNewMessagesDocument } from '$gql';
+	import type { ChatMessageFragment, NewMessagesSubscription } from '$gql';
+	import { GetMessagesDocument, NewMessagesDocument } from '$gql';
 	import { operationStore, subscription } from '@urql/svelte';
 	import { delayer } from 'minimum-delayer';
 	import ProgressCircular from 'svelte-materialify/src/components/ProgressCircular/ProgressCircular.svelte';
@@ -15,6 +15,10 @@
 	const messagesPromise = onMountPromise(async () => {
 		const response = await delayer(() => client.query(GetMessagesDocument).toPromise(), 500);
 
+		if (response.value?.error) {
+			throw response.value.error.message;
+		}
+
 		const messageQuery = response.value?.data;
 
 		if (messageQuery) {
@@ -22,18 +26,19 @@
 		}
 	});
 
-	subscription(operationStore(SubscribeNewMessagesDocument), (prevMessages = [], data: SubscribeNewMessagesSubscription) => {
+	subscription(operationStore(NewMessagesDocument), (prevMessage, data: NewMessagesSubscription) => {
 		if (messages) {
 			messages = [...messages, data.messageAdded];
 		}
-		return [...prevMessages, data];
+		// return [...prevMessages, data.messageAdded];
+		return data;
 	});
 </script>
 
 <div class="block border p-3">
 	{#await messagesPromise}
 		<div class="flex justify-center">
-			<span>Loading chat service...</span>
+			<span class="self-center">Loading chat service...</span>
 			<ProgressCircular indeterminate color="primary" class="ml-3" />
 		</div>
 	{:then}
@@ -47,7 +52,7 @@
 		<Form />
 	{:catch error}
 		<div class="flex justify-center">
-			<span>pls <span class="text-red-600 font-bold">{error.message}</span></span>
+			<span>pls <span class="text-red-600 font-bold">{error}</span></span>
 		</div>
 	{/await}
 </div>
