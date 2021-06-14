@@ -2,7 +2,7 @@
 <script lang="ts">
 	import { onMountPromise } from '$/svelteutils';
 	import { client } from '$/urql';
-	import type { ChatMessageFragment, NewMessagesSubscription } from '$gql';
+	import type { ChatMessageFragment } from '$gql';
 	import { GetMessagesDocument, NewMessagesDocument } from '$gql';
 	import { operationStore, subscription } from '@urql/svelte';
 	import { delayer } from 'minimum-delayer';
@@ -26,12 +26,11 @@
 		}
 	});
 
-	subscription(operationStore(NewMessagesDocument), (prevMessage, data: NewMessagesSubscription) => {
+	subscription(operationStore(NewMessagesDocument), (prevMessages: ChatMessageFragment[] = [], data) => {
 		if (messages) {
 			messages = [...messages, data.messageAdded];
 		}
-		// return [...prevMessages, data.messageAdded];
-		return data;
+		return [...prevMessages, data.messageAdded];
 	});
 </script>
 
