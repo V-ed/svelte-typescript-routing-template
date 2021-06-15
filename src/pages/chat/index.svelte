@@ -22,14 +22,13 @@
 		const messageQuery = response.value?.data;
 
 		if (messageQuery) {
-			messages = messageQuery.messages;
+			messages = [...messageQuery.messages, ...(messages ?? [])];
 		}
 	});
 
 	subscription(operationStore(NewMessagesDocument), (prevMessages: ChatMessageFragment[] = [], data) => {
-		if (messages) {
-			messages = [...messages, data.messageAdded];
-		}
+		messages = [...(messages ?? []), data.messageAdded];
+
 		return [...prevMessages, data.messageAdded];
 	});
 </script>
@@ -41,7 +40,9 @@
 			<ProgressCircular indeterminate color="primary" class="ml-3" />
 		</div>
 	{:then}
-		{#if messages}
+		{#if !messages}
+			<span>No messages yet! Be the first to send one!</span>
+		{:else}
 			<ul id="messages" class="list-disc list-inside px-5 pt-2 pb-5">
 				{#each messages as { user, text, time }}
 					<Message username={user.username} {text} {time} />
