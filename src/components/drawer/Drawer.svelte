@@ -1,5 +1,4 @@
 <script lang="ts">
-	// import { List, ListGroup, ListItem, Icon } from 'svelte-materialify/src';
 	import { isDrawerOpen, isMobile } from '$/stores';
 	import { mdiChevronUp, mdiCog, mdiHome } from '@mdi/js';
 	import Icon from 'svelte-materialify/src/components/Icon/Icon.svelte';

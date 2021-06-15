@@ -1,6 +1,4 @@
 <script lang="ts">
-	// import { layout } from '@roxi/routify';
-	// import { AppBar, Button, Menu, ListItem, Icon, NavigationDrawer, Overlay } from 'svelte-materialify/src';
 	import { isDrawerOpen, isMobile, themeStore } from '$/stores';
 	import { mdiDotsVertical, mdiMenu, mdiThemeLightDark } from '@mdi/js';
 	import AppBar from 'svelte-materialify/src/components/AppBar/AppBar.svelte';
@@ -10,8 +8,6 @@
 	import Menu from 'svelte-materialify/src/components/Menu/Menu.svelte';
 	import Drawer from '../drawer/Drawer.svelte';
 </script>
-
-<!-- <NavElems nodes={$layout.children} /> -->
 
 <AppBar fixed class="w-screen sm:pr-3">
 	<div slot="icon">
