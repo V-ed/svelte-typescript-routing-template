@@ -1,13 +1,13 @@
+<!-- routify:options title="Home" -->
 <script lang="ts">
-	import Logo from './_components/Logo.svelte';
+	import Loader from '$/components/Loader.svelte';
+	import TailSpin from '$/components/spinners/TailSpin.svelte';
+	import ThreeDots from '$/components/spinners/ThreeDots.svelte';
+	import { url } from '@roxi/routify';
+	import TextField from 'svelte-materialify/src/components/TextField/TextField.svelte';
 	import Counter from './_components/Counter.svelte';
 	import Item from './_components/Item.svelte';
-	import { url } from '@roxi/routify';
-	import Loader from '$/components/Loader.svelte';
-	import ThreeDots from '$/components/spinners/ThreeDots.svelte';
-	import TailSpin from '$/components/spinners/TailSpin.svelte';
-	// import { TextField } from 'svelte-materialify/src';
-	import TextField from 'svelte-materialify/src/components/TextField/TextField.svelte';
+	import Logo from './_components/Logo.svelte';
 
 	export let name: string = 'Banana';
 
@@ -17,8 +17,6 @@
 		{ name: 'Item 3', done: false, count: 0 },
 	];
 </script>
-
-<!-- routify:options title="Home" -->
 
 <div class="self-center pb-5">
 	<a href={$url('#teal')} class="hover:underline">teal</a>
@@ -76,9 +74,3 @@
 	<section id="blue" class="bg-blue-400 h-96" />
 	<section id="gray" class="bg-gray-400 h-96" />
 </div>
-
-<style>
-	/* a {
-		@apply text-blue-500 !important;
-	} */
-</style>
