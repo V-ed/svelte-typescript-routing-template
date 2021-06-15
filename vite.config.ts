@@ -1,9 +1,8 @@
-import VitePluginSvelte, { PreprocessorGroup } from '@sveltejs/vite-plugin-svelte';
+import { svelte as VitePluginSvelte } from '@sveltejs/vite-plugin-svelte';
 import { defineConfig, loadEnv } from 'vite';
 import { Options as VitePWAOptions, VitePWA as VitePluginPWA } from 'vite-plugin-pwa';
 import VitePluginWindicss from 'vite-plugin-windicss';
 import VitePluginTsConfigPaths from 'vite-tsconfig-paths';
-import { preprocessors } from './svelte.config';
 
 const DEFAULT_PORT = 5000;
 
@@ -63,7 +62,6 @@ export default defineConfig(({ mode }) => {
 			}),
 			VitePluginWindicss(),
 			VitePluginSvelte({
-				preprocess: [preprocessors.svelte as unknown as PreprocessorGroup],
 				hot: !isProduction,
 			}),
 			VitePluginTsConfigPaths({
