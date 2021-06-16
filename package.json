@@ -36,7 +36,7 @@
     "eslint": "7.28.0",
     "npm-run-all": "4.1.5",
     "postcss": "8.3.4",
-    "sass": "1.35.0",
+    "sass": "1.35.1",
     "stylelint": "13.13.1",
     "stylelint-config-css-modules": "2.2.0",
     "stylelint-config-standard": "22.0.0",
@@ -57,7 +57,7 @@
     "@urql/svelte": "^1.2.2",
     "axios": "0.21.1",
     "graphql": "^15.5.0",
-    "minimum-delayer": "0.1.0",
+    "minimum-delayer": "0.2.1",
     "socket.io-client": "4.1.2",
     "subscriptions-transport-ws": "^0.9.19"
   },

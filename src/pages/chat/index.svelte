@@ -13,13 +13,13 @@
 	let messages: ChatMessageFragment[] | undefined = undefined;
 
 	const messagesPromise = onMountPromise(async () => {
-		const response = await delayer(() => client.query(GetMessagesDocument).toPromise(), 500);
+		const response = await delayer(() => client.query(GetMessagesDocument).toPromise(), { delay: 500 });
 
-		if (response.value?.error) {
-			throw response.value.error.message;
+		if (response.error) {
+			throw response.error.message;
 		}
 
-		const messageQuery = response.value?.data;
+		const messageQuery = response.data;
 
 		if (messageQuery) {
 			messages = [...messageQuery.messages, ...(messages ?? [])];
