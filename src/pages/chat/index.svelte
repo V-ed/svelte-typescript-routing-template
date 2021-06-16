@@ -4,7 +4,7 @@
 	import Loader from '$/components/Loader.svelte';
 	import Message from './_component/Message.svelte';
 	import { onMountPromise } from '$/svelteutils';
-	import delayer from 'minimum-delayer';
+	import { delayer } from 'minimum-delayer';
 	import axios from 'axios';
 	import Form from './_component/MessageForm.svelte';
 	import { getApiUrl } from '$/utils';
@@ -35,9 +35,9 @@
 	const request = axios.get(getApiUrl('/messages'));
 
 	const promise = onMountPromise(async () => {
-		const response = await delayer(() => request, 250);
+		const response = await delayer(() => request, { delay: 250 });
 
-		const newMessages = await response.value?.data;
+		const newMessages = await response.data;
 
 		if (newMessages) {
 			messages = [...newMessages];
