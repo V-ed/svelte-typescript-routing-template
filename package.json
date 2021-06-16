@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "axios": "0.21.1",
-    "minimum-delayer": "0.2.0",
+    "minimum-delayer": "0.2.1",
     "socket.io-client": "4.1.2"
   },
   "routify": {
