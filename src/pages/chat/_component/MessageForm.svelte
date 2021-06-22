@@ -23,17 +23,20 @@
 				await client.mutation(SendNewMessageDocument, { text: message, username }).toPromise();
 
 				message = undefined;
+			} catch (error) {
+				// no error management yet
+			} finally {
 				isSending = false;
 
-				messageRef.focus();
-			} catch (error) {}
+				messageRef?.focus();
+			}
 		}
 	}
 </script>
 
 <form on:submit|preventDefault>
-	<TextField disabled={isSending} class="mt-3" bind:value={username}>Username</TextField>
-	<TextField inputElement={messageRef} autocomplete="off" disabled={isSending} class="mt-5" bind:value={message}>Message</TextField>
+	<TextField bind:value={username} disabled={isSending} class="mt-3">Username</TextField>
+	<TextField bind:value={message} disabled={isSending} class="mt-5" inputElement={messageRef} autocomplete="off">Message</TextField>
 	<div class="flex justify-center mt-5">
 		<Button disabled={!canSend} on:click={handleSend}>
 			Send Message
