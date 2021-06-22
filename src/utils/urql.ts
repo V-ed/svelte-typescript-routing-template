@@ -1,6 +1,6 @@
 import { createClient, defaultExchanges, subscriptionExchange } from '@urql/svelte';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
-import { getApiUrl } from './utils';
+import { getApiUrl } from '.';
 
 const apiUrl = getApiUrl();
 

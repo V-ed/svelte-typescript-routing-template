@@ -1,7 +1,7 @@
 <!-- routify:options title="Chat" -->
 <script lang="ts">
-	import { onMountPromise } from '$/svelteutils';
-	import { client } from '$/urql';
+	import { onMountPromise } from '$/utils/svelteutils';
+	import { client } from '$/utils/urql';
 	import type { ChatMessageFragment } from '$gql';
 	import { GetMessagesDocument, NewMessagesDocument } from '$gql';
 	import { operationStore, subscription } from '@urql/svelte';

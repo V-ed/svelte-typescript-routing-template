@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { SendNewMessageDocument } from '$/graphql/@generated';
-	import { client } from '$/urql';
+	import { client } from '$/utils/urql';
 	import { mdiSend } from '@mdi/js';
 	import Button from 'svelte-materialify/src/components/Button/Button.svelte';
 	import Icon from 'svelte-materialify/src/components/Icon/Icon.svelte';
