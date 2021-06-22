@@ -1,67 +1,55 @@
 <!-- routify:options title="Chat" -->
 <script lang="ts">
-	import { getIO } from '$/sveltesocket';
-	import Loader from '$/components/Loader.svelte';
-	import Message from './_component/Message.svelte';
 	import { onMountPromise } from '$/svelteutils';
+	import { client } from '$/urql';
+	import type { ChatMessageFragment } from '$gql';
+	import { GetMessagesDocument, NewMessagesDocument } from '$gql';
+	import { operationStore, subscription } from '@urql/svelte';
 	import { delayer } from 'minimum-delayer';
-	import axios from 'axios';
+	import ProgressCircular from 'svelte-materialify/src/components/ProgressCircular/ProgressCircular.svelte';
+	import Message from './_component/Message.svelte';
 	import Form from './_component/MessageForm.svelte';
-	import { getApiUrl } from '$/utils';
 
-	type Banana = { user: { username: string }; message: string };
+	let messages: ChatMessageFragment[] | undefined = undefined;
 
-	let formMessage: string;
+	const messagesPromise = onMountPromise(async () => {
+		const response = await delayer(() => client.query(GetMessagesDocument).toPromise(), { delay: 500 });
 
-	let messages: Banana[] = [];
+		if (response.error) {
+			throw response.error.message;
+		}
 
-	const socket = getIO();
+		const messageQuery = response.data;
 
-	socket.on('send_message', ({ user, message }: { user: { username: string }; message: string }) => {
-		messages = [...messages, { user, message }];
+		if (messageQuery) {
+			messages = [...messageQuery.messages, ...(messages ?? [])];
+		}
 	});
 
-	async function handleSend(e: CustomEvent) {
-		const { username, message } = e.detail;
+	subscription(operationStore(NewMessagesDocument), (prevMessages: ChatMessageFragment[] = [], data) => {
+		messages = [...(messages ?? []), data.messageAdded];
 
-		const data = { username, message };
-
-		// socket.emit('send_message', object);
-		await axios.post(getApiUrl('/messages'), data);
-
-		formMessage = '';
-	}
-
-	const request = axios.get(getApiUrl('/messages'));
-
-	const promise = onMountPromise(async () => {
-		const response = await delayer(() => request, { delay: 250 });
-
-		const newMessages = await response.data;
-
-		if (newMessages) {
-			messages = [...newMessages];
-		}
+		return [...prevMessages, data.messageAdded];
 	});
 </script>
 
 <div class="block border p-3">
-	{#await promise}
+	{#await messagesPromise}
 		<div class="flex justify-center">
-			<span>Loading chat service...</span>
-			<Loader {promise} class="ml-3" />
+			<span class="self-center">Loading chat service...</span>
+			<ProgressCircular indeterminate color="primary" class="ml-3" />
 		</div>
 	{:then}
-		{#if !messages.length}
-			<p class="text-center italic">Messages will appear here...</p>
+		{#if !messages}
+			<span>No messages yet! Be the first to send one!</span>
 		{:else}
 			<ul id="messages" class="list-disc list-inside px-5 pt-2 pb-5">
-				{#each messages as { user, message }}
-					<Message user={user.username} {message} />
+				{#each messages as { user, text, time }}
+					<Message username={user.username} {text} {time} />
 				{/each}
 			</ul>
 		{/if}
-		<Form on:send={handleSend} bind:message={formMessage} />
+		<Form />
 	{:catch error}
 		<div class="flex justify-center">
 			<span>pls <span class="text-red-600 font-bold">{error}</span></span>

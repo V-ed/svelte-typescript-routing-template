@@ -8,10 +8,10 @@ export function capitalize(str: string): string {
  * @param path The remaining path / query objects used to create the api path.
  * @returns The full path desired.
  */
-export function getApiUrl(path?: string): string {
+export function getApiUrl(path?: string): URL {
 	const apiServerAddr: string = (import.meta.env.VITE_API_ADDR as string) ?? 'http://localhost:3000';
 
-	const finalPath = path ? path : '/';
+	const url = path ? new URL(path, apiServerAddr) : new URL(apiServerAddr);
 
-	return `${apiServerAddr}${finalPath}`;
+	return url;
 }

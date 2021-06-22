@@ -1,8 +1,23 @@
 <script lang="ts">
-	export let user: string;
-	export let message: string;
+	export let username: string;
+	export let text: string;
+
+	export let time: string | undefined;
+
+	$: convertedTime = (time && new Date(time)) || undefined;
+
+	$: formattedDate = convertedTime?.toLocaleDateString();
+	$: formattedTime = convertedTime?.toLocaleTimeString();
 </script>
 
 <li>
-	<span class="font-weight-bold">{user}</span> : {message}
+	{#if formattedTime}
+		<span class="italic">{formattedTime}</span>
+		<span> - </span>
+	{/if}
+	<span class="font-weight-bold">{username}</span>
+	<span> : </span>
+	<span>
+		{text}
+	</span>
 </li>
