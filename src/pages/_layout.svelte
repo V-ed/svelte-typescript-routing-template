@@ -6,8 +6,10 @@
 	import { onMount } from 'svelte';
 	import MaterialAppMin from 'svelte-materialify/src/components/MaterialApp/MaterialAppMin.svelte';
 
-	metatags.template('title', (title: string) => `${title ? `${title} - ` : ''}Template`);
-	$: metatags.title = capitalize($page.title);
+	const appTitle = (import.meta.env.VITE_TITLE as string) ?? 'Test';
+
+	$: pageTitle = `${$page.title ? $page.title : ''}${$page.title && appTitle ? ' - ' : ''}${appTitle}`;
+	$: metatags.title = capitalize(pageTitle);
 
 	onMount(async () => {
 		// @ts-ignore
