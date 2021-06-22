@@ -34,11 +34,11 @@ export const manifestOptions: VitePWAOptions['manifest'] = {
 };
 
 export default defineConfig(({ mode }) => {
-	Object.assign(process.env, loadEnv(mode, process.cwd()));
+	const viteEnv = loadEnv(mode, process.cwd(), '');
 
 	const isProduction = mode === 'production';
 
-	const port: number = parseInt(process.env.PORT) || DEFAULT_PORT;
+	const port: number = parseInt(viteEnv.PORT) || DEFAULT_PORT;
 
 	return {
 		build: {
