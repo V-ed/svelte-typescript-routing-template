@@ -9,7 +9,6 @@ export default defineConfig({
 		// https://github.com/TheComputerM/svelte-materialify/blob/0d7dcd1/packages/svelte-materialify/src/styles/_variables.scss#L197-L201
 		screens: {
 			DEFAULT: '100%',
-			xs: '600px',
 			sm: '600px',
 			md: '940px',
 			lg: '1264px', // 1280px - 16px
@@ -18,7 +17,6 @@ export default defineConfig({
 		},
 		container: {
 			center: true,
-			// padding: '2rem',
 			padding: {
 				DEFAULT: '1rem',
 				sm: '2rem',

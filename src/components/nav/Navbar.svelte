@@ -6,7 +6,6 @@
 	import Icon from 'svelte-materialify/src/components/Icon/Icon.svelte';
 	import ListItem from 'svelte-materialify/src/components/List/ListItem.svelte';
 	import Menu from 'svelte-materialify/src/components/Menu/Menu.svelte';
-	import Drawer from '../drawer/Drawer.svelte';
 </script>
 
 <AppBar fixed class="w-screen sm:pr-3">
@@ -36,10 +35,6 @@
 		<Icon path={mdiThemeLightDark} />
 	</Button>
 </AppBar>
-
-<Drawer />
-
-<div class="h-14" />
 
 <style>
 	:global(.s-app-bar) {
