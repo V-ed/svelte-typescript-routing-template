@@ -38,11 +38,11 @@
 <style>
 	main {
 		/* Svelte-Materialify's navbar height */
-		padding-top: 56px;
+		margin-top: 56px;
 	}
 
 	main.nav-forced-open {
 		/* Svelte-Materialify's drawer width */
-		padding-left: 256px;
+		margin-left: 256px;
 	}
 </style>
