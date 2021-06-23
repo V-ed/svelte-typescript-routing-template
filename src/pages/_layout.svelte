@@ -4,6 +4,7 @@
 	import { capitalize } from '$/utils';
 	import { metatags, page } from '@roxi/routify';
 	import { onMount } from 'svelte';
+	import Container from 'svelte-materialify/src/components/Grid/Container.svelte';
 	import MaterialAppMin from 'svelte-materialify/src/components/MaterialApp/MaterialAppMin.svelte';
 	import Drawer from '../components/drawer/Drawer.svelte';
 
@@ -27,10 +28,10 @@
 
 	<Drawer />
 
-	<main class:is-mobile={!$isMobile}>
-		<div class="container mx-auto flex flex-col flex-grow" style="min-height: 100vh">
+	<main class:nav-forced-open={!$isMobile} class="min-h-screen">
+		<Container class="flex flex-col">
 			<slot />
-		</div>
+		</Container>
 	</main>
 </MaterialAppMin>
 
@@ -40,7 +41,7 @@
 		padding-top: 56px;
 	}
 
-	main.is-mobile {
+	main.nav-forced-open {
 		/* Svelte-Materialify's drawer width */
 		padding-left: 256px;
 	}
