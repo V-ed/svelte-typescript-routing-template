@@ -1,7 +1,7 @@
 /** @type {import('svelte-preprocess').default} */
 // @ts-ignore
 const sveltePreprocess = require('svelte-preprocess');
-const { windi: windicssPreprocess } = require('svelte-windicss-preprocess');
+// const { windi: windicssPreprocess } = require('svelte-windicss-preprocess');
 
 const preprocessors = {
 	svelte: sveltePreprocess({
@@ -9,7 +9,7 @@ const preprocessors = {
 			includePaths: ['theme'],
 		},
 	}),
-	windicss: windicssPreprocess(),
+	// windicss: windicssPreprocess(),
 };
 
 module.exports = {

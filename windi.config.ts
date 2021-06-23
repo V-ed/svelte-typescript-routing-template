@@ -5,14 +5,26 @@ export default defineConfig({
 	darkMode: 'media',
 	// preflight: false,
 	theme: {
+		// defining screens for svelte-materialify
+		// https://github.com/TheComputerM/svelte-materialify/blob/0d7dcd1/packages/svelte-materialify/src/styles/_variables.scss#L197-L201
+		screens: {
+			DEFAULT: '100%',
+			xs: '600px',
+			sm: '600px',
+			md: '940px',
+			lg: '1264px', // 1280px - 16px
+			xl: '1904px', // 1920px - 16px
+			// '2xl': '1536px',
+		},
 		container: {
 			center: true,
+			// padding: '2rem',
 			padding: {
 				DEFAULT: '1rem',
 				sm: '2rem',
 				lg: '4rem',
 				xl: '5rem',
-				'2xl': '6rem',
+				// '2xl': '6rem',
 			},
 		},
 		// colors: {
