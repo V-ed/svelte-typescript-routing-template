@@ -14,7 +14,6 @@
 	$: metatags.title = capitalize(pageTitle);
 
 	onMount(async () => {
-		// @ts-ignore
 		let breakpoints = await import('svelte-materialify/src/utils/breakpoints');
 		setBreakpoints(breakpoints.default);
 		isMobile.refresh();

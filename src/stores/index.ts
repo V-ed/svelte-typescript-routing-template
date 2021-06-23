@@ -1,10 +1,11 @@
+import type BreakpointVariants from 'svelte-materialify/src/utils/breakpoints';
 import { writable } from 'svelte/store';
 import { makeRefreshable } from './refreshable';
 import { makeToggleable } from './toggleable';
 
-let breakpoints: Record<string, string> | undefined = undefined;
+let breakpoints: typeof BreakpointVariants | undefined = undefined;
 
-export function setBreakpoints(newBreakpoints: Record<string, string>): void {
+export function setBreakpoints(newBreakpoints: typeof BreakpointVariants): void {
 	breakpoints = newBreakpoints;
 }
 
