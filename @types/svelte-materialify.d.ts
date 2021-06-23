@@ -181,7 +181,7 @@ declare module 'svelte-materialify/src/components/Tooltip/Tooltip.svelte' {
 // }
 
 // -----------------
-//    Actions
+//      Actions
 // -----------------
 
 declare module 'svelte-materialify/src/actions/ClickOutside' {
@@ -198,4 +198,32 @@ declare module 'svelte-materialify/src/actions/Ripple' {
 }
 declare module 'svelte-materialify/src/actions/Touch' {
 	export { Touch as default } from 'svelte-materialify';
+}
+
+// -----------------
+//   Random Utils
+// -----------------
+
+declare module 'svelte-materialify/src/utils/breakpoints' {
+	export const breakpoints = {
+		xs,
+		sm,
+		md,
+		lg,
+		xl,
+	};
+
+	export default {} as {
+		'xs-only': string;
+		'sm-only': string;
+		'sm-and-down': string;
+		'sm-and-up': string;
+		'md-only': string;
+		'md-and-down': string;
+		'md-and-up': string;
+		'lg-only': string;
+		'lg-and-down': string;
+		'lg-and-up': string;
+		'xl-only': string;
+	};
 }
