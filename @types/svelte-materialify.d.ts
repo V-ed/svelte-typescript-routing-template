@@ -1,6 +1,6 @@
-// declare module 'svelte-materialify/src' {
-// 	export * from 'svelte-materialify';
-// }
+// -----------------
+//    Components
+// -----------------
 
 declare module 'svelte-materialify/src/components/Alert/Alert.svelte' {
 	export { Alert as default } from 'svelte-materialify';
@@ -20,6 +20,9 @@ declare module 'svelte-materialify/src/components/Breadcrumbs/Breadcrumbs.svelte
 declare module 'svelte-materialify/src/components/Button/Button.svelte' {
 	export { Button as default } from 'svelte-materialify';
 }
+// declare module 'svelte-materialify/src/components/ButtonGroup/ButtonGroup.svelte' {
+// 	export { ButtonGroup as default } from 'svelte-materialify';
+// }
 declare module 'svelte-materialify/src/components/Card/Card.svelte' {
 	export { Card as default } from 'svelte-materialify';
 }
@@ -38,12 +41,21 @@ declare module 'svelte-materialify/src/components/Card/CardTitle.svelte' {
 declare module 'svelte-materialify/src/components/Checkbox/Checkbox.svelte' {
 	export { Checkbox as default } from 'svelte-materialify';
 }
-declare module 'svelte-materialify/src/components/Col/Col.svelte' {
-	export { Col as default } from 'svelte-materialify';
+declare module 'svelte-materialify/src/components/Chip/Chip.svelte' {
+	export { Chip as default } from 'svelte-materialify';
 }
-declare module 'svelte-materialify/src/components/Container/Container.svelte' {
-	export { Container as default } from 'svelte-materialify';
-}
+// declare module 'svelte-materialify/src/components/DataTable/DataTable.svelte' {
+// 	export { DataTable as default } from 'svelte-materialify';
+// }
+// declare module 'svelte-materialify/src/components/DataTable/DataTableBody.svelte' {
+// 	export { DataTableBody as default } from 'svelte-materialify';
+// }
+// declare module 'svelte-materialify/src/components/DataTable/DataTableCell.svelte' {
+// 	export { DataTableCell as default } from 'svelte-materialify';
+// }
+// declare module 'svelte-materialify/src/components/DataTable/DataTableHead.svelte' {
+// 	export { DataTableHead as default } from 'svelte-materialify';
+// }
 declare module 'svelte-materialify/src/components/Dialog/Dialog.svelte' {
 	export { Dialog as default } from 'svelte-materialify';
 }
@@ -59,6 +71,15 @@ declare module 'svelte-materialify/src/components/ExpansionPanels/ExpansionPanel
 declare module 'svelte-materialify/src/components/Footer/Footer.svelte' {
 	export { Footer as default } from 'svelte-materialify';
 }
+declare module 'svelte-materialify/src/components/Grid/Col.svelte' {
+	export { Col as default } from 'svelte-materialify';
+}
+declare module 'svelte-materialify/src/components/Grid/Container.svelte' {
+	export { Container as default } from 'svelte-materialify';
+}
+declare module 'svelte-materialify/src/components/Grid/Row.svelte' {
+	export { Row as default } from 'svelte-materialify';
+}
 declare module 'svelte-materialify/src/components/Icon/Icon.svelte' {
 	export { Icon as default } from 'svelte-materialify';
 }
@@ -68,6 +89,9 @@ declare module 'svelte-materialify/src/components/Input/Input.svelte' {
 declare module 'svelte-materialify/src/components/ItemGroup/ItemGroup.svelte' {
 	export { ItemGroup as default } from 'svelte-materialify';
 }
+// declare module 'svelte-materialify/src/components/Lazy/Lazy.svelte' {
+// 	export { Lazy as default } from 'svelte-materialify';
+// }
 declare module 'svelte-materialify/src/components/List/List.svelte' {
 	export { List as default } from 'svelte-materialify';
 }
@@ -104,12 +128,15 @@ declare module 'svelte-materialify/src/components/ProgressLinear/ProgressLinear.
 declare module 'svelte-materialify/src/components/Radio/Radio.svelte' {
 	export { Radio as default } from 'svelte-materialify';
 }
-declare module 'svelte-materialify/src/components/Row/Row.svelte' {
-	export { Row as default } from 'svelte-materialify';
-}
 declare module 'svelte-materialify/src/components/Select/Select.svelte' {
 	export { Select as default } from 'svelte-materialify';
 }
+// declare module 'svelte-materialify/src/components/SlideGroup/SlideGroup.svelte' {
+// 	export { SlideGroup as default } from 'svelte-materialify';
+// }
+// declare module 'svelte-materialify/src/components/SlideGroup/SlideItem.svelte' {
+// 	export { SlideItem as default } from 'svelte-materialify';
+// }
 declare module 'svelte-materialify/src/components/Slider/Slider.svelte' {
 	export { Slider as default } from 'svelte-materialify';
 }
@@ -122,14 +149,17 @@ declare module 'svelte-materialify/src/components/Subheader/Subheader.svelte' {
 declare module 'svelte-materialify/src/components/Switch/Switch.svelte' {
 	export { Switch as default } from 'svelte-materialify';
 }
-declare module 'svelte-materialify/src/components/Tabs/Tabs.svelte' {
-	export { Tabs as default } from 'svelte-materialify';
-}
+// declare module 'svelte-materialify/src/components/Table/Table.svelte' {
+// 	export { Table as default } from 'svelte-materialify';
+// }
 declare module 'svelte-materialify/src/components/Tabs/Tab.svelte' {
 	export { Tab as default } from 'svelte-materialify';
 }
 declare module 'svelte-materialify/src/components/Tabs/TabContent.svelte' {
 	export { TabContent as default } from 'svelte-materialify';
+}
+declare module 'svelte-materialify/src/components/Tabs/Tabs.svelte' {
+	export { Tabs as default } from 'svelte-materialify';
 }
 declare module 'svelte-materialify/src/components/Textarea/Textarea.svelte' {
 	export { Textarea as default } from 'svelte-materialify';
@@ -140,6 +170,19 @@ declare module 'svelte-materialify/src/components/TextField/TextField.svelte' {
 declare module 'svelte-materialify/src/components/Tooltip/Tooltip.svelte' {
 	export { Tooltip as default } from 'svelte-materialify';
 }
+// declare module 'svelte-materialify/src/components/VirtualList/VirtualList.svelte' {
+// 	export { VirtualList as default } from 'svelte-materialify';
+// }
+// declare module 'svelte-materialify/src/components/Window/Window.svelte' {
+// 	export { Window as default } from 'svelte-materialify';
+// }
+// declare module 'svelte-materialify/src/components/Window/WindowItem.svelte' {
+// 	export { WindowItem as default } from 'svelte-materialify';
+// }
+
+// -----------------
+//    Actions
+// -----------------
 
 declare module 'svelte-materialify/src/actions/ClickOutside' {
 	export { ClickOutside as default } from 'svelte-materialify';
