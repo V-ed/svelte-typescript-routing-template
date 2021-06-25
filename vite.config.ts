@@ -1,5 +1,6 @@
 import { svelte as VitePluginSvelte } from '@sveltejs/vite-plugin-svelte';
 import { defineConfig, loadEnv } from 'vite';
+import { injectHtml as VitePluginInjectHTML } from 'vite-plugin-html';
 import { Options as VitePWAOptions, VitePWA as VitePluginPWA } from 'vite-plugin-pwa';
 import VitePluginWindicss from 'vite-plugin-windicss';
 import VitePluginTsConfigPaths from 'vite-tsconfig-paths';
@@ -40,6 +41,8 @@ export default defineConfig(({ mode }) => {
 
 	const port: number = parseInt(viteEnv.PORT) || DEFAULT_PORT;
 
+	const htmlTitle = viteEnv.VITE_TITLE || 'Dev';
+
 	return {
 		build: {
 			// cssCodeSplit: false,
@@ -66,6 +69,11 @@ export default defineConfig(({ mode }) => {
 			}),
 			VitePluginTsConfigPaths({
 				loose: true,
+			}),
+			VitePluginInjectHTML({
+				injectData: {
+					title: htmlTitle,
+				},
 			}),
 		],
 	};

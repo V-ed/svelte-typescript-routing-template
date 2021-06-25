@@ -5,6 +5,7 @@
 		"esbenp.prettier-vscode",
 		"voorjaar.windicss-intellisense",
 		"stylelint.vscode-stylelint",
-		"graphql.vscode-graphql"
+		"graphql.vscode-graphql",
+		"digitalbrainstem.javascript-ejs-support"
 	]
 }
