@@ -48,7 +48,15 @@
 	function handleSend(e: CustomEvent) {
 		const { username, text } = e.detail as UserMessage;
 
-		messages = [...(messages ?? []), { active: false, user: { username }, text, time: undefined }];
+		messages = [
+			...(messages ?? []),
+			{
+				active: false,
+				user: { username },
+				text,
+				time: undefined,
+			},
+		];
 	}
 </script>
 
