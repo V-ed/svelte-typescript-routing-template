@@ -71,8 +71,8 @@
 			<span>No messages yet! Be the first to send one!</span>
 		{:else}
 			<ul id="messages" class="list-disc list-inside px-5 pt-2 pb-5">
-				{#each messages as { user, text, time, active }}
-					<Message username={user.username} {text} {time} {active} />
+				{#each messages as { user: { username }, text, time, active }}
+					<Message {username} {text} {time} {active} />
 				{/each}
 			</ul>
 		{/if}
