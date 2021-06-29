@@ -15,3 +15,5 @@ export function getApiUrl(path?: string): URL {
 
 	return url;
 }
+
+export const appTitle = (import.meta.env.VITE_TITLE as string) ?? '';
