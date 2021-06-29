@@ -40,4 +40,5 @@
 	"scss.validate": false,
 	"svelte.plugin.css.diagnostics.enable": false,
 	"vscode-graphql.useSchemaFileDefinitions": true,
+	"vscode-edge-devtools.webRoot": "${workspaceFolder}/src",
 }
