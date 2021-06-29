@@ -1,5 +1,6 @@
 <!-- routify:options title="Chat" -->
 <script lang="ts">
+	import type { UserMessage } from '$/types/chat';
 	import { onMountPromise } from '$/utils/svelteutils';
 	import { client } from '$/utils/urql';
 	import type { ChatMessageFragment } from '$gql';
@@ -10,7 +11,10 @@
 	import Message from './_component/Message.svelte';
 	import Form from './_component/MessageForm.svelte';
 
-	let messages: ChatMessageFragment[] | undefined = undefined;
+	type ChatMessage = ChatMessageFragment & { active: boolean };
+
+	let user: string | undefined = undefined;
+	let messages: ChatMessage[] | undefined = undefined;
 
 	const messagesPromise = onMountPromise(async () => {
 		const response = await delayer(() => client.query(GetMessagesDocument).toPromise(), { delay: 500 });
@@ -22,15 +26,30 @@
 		const messageQuery = response.data;
 
 		if (messageQuery) {
-			messages = [...messageQuery.messages, ...(messages ?? [])];
+			messages = [...messageQuery.messages.map((message) => ({ active: true, ...message })), ...(messages ?? [])];
 		}
 	});
 
 	subscription(operationStore(NewMessagesDocument), (prevMessages: ChatMessageFragment[] = [], data) => {
-		messages = [...(messages ?? []), data.messageAdded];
+		if (data.messageAdded.user.username == user) {
+			messages = messages?.map((m) => {
+				if (m.text == data.messageAdded.text) {
+					m = { ...data.messageAdded, active: true };
+				}
+				return m;
+			});
+		} else {
+			messages = [...(messages ?? []), { active: true, ...data.messageAdded }];
+		}
 
 		return [...prevMessages, data.messageAdded];
 	});
+
+	function handleSend(e: CustomEvent) {
+		const { username, text } = e.detail as UserMessage;
+
+		messages = [...(messages ?? []), { active: false, user: { username }, text, time: undefined }];
+	}
 </script>
 
 <div class="block border p-3">
@@ -44,12 +63,12 @@
 			<span>No messages yet! Be the first to send one!</span>
 		{:else}
 			<ul id="messages" class="list-disc list-inside px-5 pt-2 pb-5">
-				{#each messages as { user, text, time }}
-					<Message username={user.username} {text} {time} />
+				{#each messages as { user, text, time, active }}
+					<Message username={user.username} {text} {time} {active} />
 				{/each}
 			</ul>
 		{/if}
-		<Form />
+		<Form on:send={handleSend} bind:username={user} />
 	{:catch error}
 		<div class="flex justify-center">
 			<span>pls <span class="text-red-600 font-bold">{error}</span></span>

@@ -20,6 +20,6 @@ subscription NewMessages {
 
 mutation SendNewMessage($text: String!, $username: String!) {
 	addMessage(data: { text: $text, user: { connectOrCreate: { where: { username: $username }, create: { username: $username } } } }) {
-		text
+		...ChatMessage
 	}
 }
