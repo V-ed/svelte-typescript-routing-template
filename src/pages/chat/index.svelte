@@ -26,7 +26,9 @@
 		const messageQuery = response.data;
 
 		if (messageQuery) {
-			messages = [...messageQuery.messages.map((message) => ({ active: true, ...message })), ...(messages ?? [])];
+			const fetchedMessages = messageQuery.messages.map((message) => ({ active: true, ...message }));
+
+			messages = [...fetchedMessages, ...(messages ?? [])];
 		}
 	});
 
