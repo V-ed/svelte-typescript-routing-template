@@ -42,7 +42,7 @@
     "stylelint": "13.13.1",
     "stylelint-config-css-modules": "2.2.0",
     "stylelint-config-standard": "22.0.0",
-    "svelte": "3.38.3",
+    "svelte": "3.40.2",
     "svelte-check": "2.2.3",
     "svelte-materialify": "0.3.11",
     "svelte-preprocess": "4.7.4",
