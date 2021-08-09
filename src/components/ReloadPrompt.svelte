@@ -26,15 +26,17 @@
 
 <Snackbar class="justify-between" right bottom bind:active={toast} timeout={$offlineReady ? offlineReadyTimeout : undefined}>
 	{#if $offlineReady}
-		<span>App ready to work offline</span>
+		<span>App ready to work offline!</span>
 	{:else}
 		<span>New content available, click on reload button to update.</span>
 	{/if}
-	{#if $needRefresh}
-		<Button fab on:click={() => updateServiceWorker(true)} class="mr-3">
-			<Icon path={mdiReload} />
-		</Button>
-	{:else}
-		<Button text on:click={close} class="ml-3">Dismiss</Button>
-	{/if}
+	<div class="ml-3">
+		{#if $needRefresh}
+			<Button fab on:click={() => updateServiceWorker(true)}>
+				<Icon path={mdiReload} />
+			</Button>
+		{:else}
+			<Button text on:click={close}>Dismiss</Button>
+		{/if}
+	</div>
 </Snackbar>
