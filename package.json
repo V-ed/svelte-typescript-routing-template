@@ -25,10 +25,10 @@
     "generate:watch": "graphql-codegen -r dotenv/config --config codegen.yml dotenv_config_path=.env.local --watch"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "1.21.8",
-    "@graphql-codegen/typed-document-node": "1.18.10",
-    "@graphql-codegen/typescript": "1.23.0",
-    "@graphql-codegen/typescript-operations": "1.18.4",
+    "@graphql-codegen/cli": "2.0.1",
+    "@graphql-codegen/typed-document-node": "2.0.0",
+    "@graphql-codegen/typescript": "2.0.0",
+    "@graphql-codegen/typescript-operations": "2.0.1",
     "@mdi/js": "5.9.55",
     "@roxi/routify": "2.18.3",
     "@sveltejs/vite-plugin-svelte": "1.0.0-next.15",
