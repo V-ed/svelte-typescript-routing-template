@@ -24,7 +24,7 @@
 			"vite/client",
 			"svelte",
 			"@roxi/routify",
-			"vite-plugin-pwa"
+			"vite-plugin-pwa/client"
 		],
 		"typeRoots": [
 			"@types",

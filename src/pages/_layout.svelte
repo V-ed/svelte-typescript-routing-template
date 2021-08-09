@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Navbar from '$/components/nav/Navbar.svelte';
+	import ReloadPrompt from '$/components/ReloadPrompt.svelte';
 	import { isMobile, setBreakpoints, themeStore } from '$/stores';
 	import { appTitle, capitalize } from '$/utils';
 	import { metatags, page } from '@roxi/routify';
@@ -30,6 +31,8 @@
 			<slot />
 		</Container>
 	</main>
+
+	<ReloadPrompt />
 </MaterialAppMin>
 
 <style>
