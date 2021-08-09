@@ -7,33 +7,6 @@ import VitePluginTsConfigPaths from 'vite-tsconfig-paths';
 
 const DEFAULT_PORT = 5000;
 
-export const manifestOptions: VitePWAOptions['manifest'] = {
-	name: 'Svelte Typescript Routing Template',
-	short_name: 'Svelte Typescript Routing Template',
-	icons: [
-		{
-			src: '/icons/pwa/icon-192x192.png',
-			sizes: '192x192',
-			type: 'image/png',
-		},
-		{
-			src: '/icons/pwa/icon-256x256.png',
-			sizes: '256x256',
-			type: 'image/png',
-		},
-		{
-			src: '/icons/pwa/icon-384x384.png',
-			sizes: '384x384',
-			type: 'image/png',
-		},
-		{
-			src: '/icons/pwa/icon-512x512.png',
-			sizes: '512x512',
-			type: 'image/png',
-		},
-	],
-};
-
 export default defineConfig(({ mode }) => {
 	const viteEnv = loadEnv(mode, process.cwd(), '');
 
@@ -42,6 +15,33 @@ export default defineConfig(({ mode }) => {
 	const port: number = parseInt(viteEnv.PORT) || DEFAULT_PORT;
 
 	const htmlTitle = viteEnv.VITE_TITLE || 'Dev';
+
+	const manifestOptions: VitePWAOptions['manifest'] = {
+		name: `${isProduction ? '' : '[DEV] '}Svelte Typescript Routing Template`,
+		short_name: `${isProduction ? '' : '[DEV] '}Svelte Typescript Routing Template`,
+		icons: [
+			{
+				src: '/icons/pwa/icon-192x192.png',
+				sizes: '192x192',
+				type: 'image/png',
+			},
+			{
+				src: '/icons/pwa/icon-256x256.png',
+				sizes: '256x256',
+				type: 'image/png',
+			},
+			{
+				src: '/icons/pwa/icon-384x384.png',
+				sizes: '384x384',
+				type: 'image/png',
+			},
+			{
+				src: '/icons/pwa/icon-512x512.png',
+				sizes: '512x512',
+				type: 'image/png',
+			},
+		],
+	};
 
 	return {
 		build: {
