@@ -4,7 +4,9 @@ import { getApiUrl } from '.';
 
 const apiUrl = getApiUrl();
 
-const subscriptionClient = new SubscriptionClient(`ws://${apiUrl.origin}/graphql`, { reconnect: true });
+const wsProtocol = apiUrl.protocol == 'https:' ? 'wss' : 'ws';
+
+const subscriptionClient = new SubscriptionClient(`${wsProtocol}://${apiUrl.host}/graphql`, { reconnect: true });
 
 export const client = createClient({
 	url: `${apiUrl.origin}/graphql`,
