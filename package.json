@@ -22,7 +22,9 @@
     "lint:src": "eslint \"src/**/*.{t,j}s\"",
     "lint:css": "stylelint \"**/*.{css,svelte,html}\"",
     "generate": "graphql-codegen -r dotenv/config --config codegen.yml dotenv_config_path=.env.local",
-    "generate:watch": "graphql-codegen -r dotenv/config --config codegen.yml dotenv_config_path=.env.local --watch"
+    "generate:watch": "graphql-codegen -r dotenv/config --config codegen.yml dotenv_config_path=.env.local --watch",
+    "preversion": "npm run lint",
+    "postversion": "git push"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.0.1",
