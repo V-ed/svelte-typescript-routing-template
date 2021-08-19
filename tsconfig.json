@@ -42,7 +42,7 @@
 		
 		"noEmitOnError": true,
 		"skipLibCheck": true,
-		"importsNotUsedAsValues": "error"
+		// "importsNotUsedAsValues": "error"
 	},
 	"include": [
 		"src/**/*",
