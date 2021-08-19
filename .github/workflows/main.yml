@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD
 
 on:
   push:
@@ -14,6 +14,11 @@ jobs:
     name: "Validate"
     runs-on: ubuntu-latest
     
+    outputs:
+      changed: ${{ steps.check.outputs.changed }}
+      version: ${{ steps.check.outputs.version }}
+      type: ${{ steps.check.outputs.type }}
+    
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
@@ -28,6 +33,12 @@ jobs:
         
     - name: Validate
       run: npm run validate
+
+    - name: Version Check
+      id: check
+      uses: EndBug/version-check@v2.0.1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
       
   lint:
     name: "Lint"
@@ -44,4 +55,30 @@ jobs:
         
     - name: Lint
       run: npm run lint
+      
+  release:
+    name: 'Release'
+    runs-on: ubuntu-latest
+    needs: [validate]
+
+    if: needs.validate.outputs.changed == 'true'
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: 'Netlify Deploy'
+        uses: jsmrcaga/action-netlify-deploy@v1.6.0
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_API_ID }}
+          NETLIFY_DEPLOY_TO_PROD: true
+          build_directory: 'dist'
+
+      - name: 'Tag new ${{ needs.validate.outputs.type }} version: ${{ needs.validate.outputs.version }}'
+        uses: tvdias/github-tagger@v0.0.2
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          tag: 'v${{ needs.validate.outputs.version }}'
         
