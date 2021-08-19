@@ -68,16 +68,33 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Netlify Deploy
-        uses: jsmrcaga/action-netlify-deploy@v1.6.0
+      - uses: actions/setup-node@v2
         with:
+          node-version: ${{env.NODE_VERSION}}
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          VITE_TITLE: 'Prod Title'
+          VITE_API_ADDR: '${{ secrets.API_URL }}'
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './dist'
+          production-branch: master
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          netlify-config-path: ./netlify.toml
+          github-deployment-environment: 'Production'
+        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_API_ID }}
-          NETLIFY_DEPLOY_TO_PROD: true
-          build_directory: 'dist'
 
       - name: 'Tag new ${{ needs.validate.outputs.type }} version: ${{ needs.validate.outputs.version }}'
         uses: tvdias/github-tagger@v0.0.2
         with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           tag: 'v${{ needs.validate.outputs.version }}'

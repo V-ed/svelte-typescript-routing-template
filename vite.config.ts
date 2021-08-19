@@ -17,8 +17,8 @@ export default defineConfig(({ mode }) => {
 	const htmlTitle = viteEnv.VITE_TITLE || 'Dev';
 
 	const manifestOptions: VitePWAOptions['manifest'] = {
-		name: `${isProduction ? '' : '[DEV] '}Svelte Typescript Routing Template`,
-		short_name: `${isProduction ? '' : '[DEV] '}Svelte Typescript Routing Template`,
+		name: viteEnv.VITE_TITLE,
+		short_name: `Svelte PWA App`,
 		icons: [
 			{
 				src: '/icons/pwa/icon-192x192.png',
