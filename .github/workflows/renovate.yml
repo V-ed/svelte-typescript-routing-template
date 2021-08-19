@@ -4,27 +4,26 @@ on:
   push:
     branches:
       - 'renovate/**'
-      
+
 env:
   NODE_VERSION: '14'
 
 jobs:
   validate:
-    name: "Validate"
+    name: Validate
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: ${{env.NODE_VERSION}}
-        
-    - name: Install
-      run: npm ci
-        
-    - name: Build
-      run: npm run build
-        
-    - name: Validate
-      run: npm run validate
-        
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{env.NODE_VERSION}}
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Validate
+        run: npm run validate
