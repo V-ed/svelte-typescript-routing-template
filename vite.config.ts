@@ -53,7 +53,7 @@ export default defineConfig(({ mode }) => {
 			port: port,
 		},
 		optimizeDeps: {
-			exclude: ['@roxi/routify', 'svelte', '@urql/svelte'],
+			exclude: ['@roxi/routify', '@urql/svelte'],
 		},
 		resolve: {
 			dedupe: ['@roxi/routify'],
