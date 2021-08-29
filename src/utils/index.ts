@@ -11,7 +11,9 @@ export function capitalize(str: string): string {
 export function getApiUrl(path?: string): URL {
 	const apiServerAddr: string = (import.meta.env.VITE_API_ADDR as string) ?? 'http://localhost:3000';
 
-	const url = path ? new URL(path, apiServerAddr) : new URL(apiServerAddr);
+	const pathUrl = path ?? '/';
+
+	const url = new URL(pathUrl, apiServerAddr);
 
 	return url;
 }
