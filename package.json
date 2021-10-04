@@ -53,7 +53,7 @@
     "stylelint": "13.13.1",
     "stylelint-config-css-modules": "2.2.0",
     "stylelint-config-standard": "22.0.0",
-    "svelte": "3.43.0",
+    "svelte": "3.43.1",
     "svelte-check": "2.2.6",
     "svelte-materialify": "0.3.11",
     "svelte-preprocess": "4.9.5",
