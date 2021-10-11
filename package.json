@@ -41,7 +41,7 @@
     "@graphql-codegen/typescript-operations": "2.1.6",
     "@mdi/js": "6.2.95",
     "@roxi/routify": "2.18.3",
-    "@sveltejs/vite-plugin-svelte": "1.0.0-next.26",
+    "@sveltejs/vite-plugin-svelte": "1.0.0-next.27",
     "@tsconfig/svelte": "2.0.1",
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
