@@ -51,7 +51,7 @@
     "postcss": "8.3.11",
     "sass": "1.43.4",
     "stylelint": "13.13.1",
-    "stylelint-config-css-modules": "2.2.0",
+    "stylelint-config-css-modules": "2.3.0",
     "stylelint-config-standard": "22.0.0",
     "svelte": "3.43.1",
     "svelte-check": "2.2.8",
