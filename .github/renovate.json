@@ -1,31 +1,3 @@
 {
-	"extends": [
-		"config:base"
-	],
-	"labels": [
-		"dependencies"
-	],
-	"commitMessagePrefix": "[Renovate] ",
-	"automergeType": "branch",
-	"packageRules": [
-		{
-			"updateTypes": [
-				"minor",
-				"patch",
-				"pin",
-				"digest"
-			],
-			"automerge": true
-		},
-		{
-			"depTypeList": [
-				"devDependencies"
-			],
-			"automerge": true
-		}
-	],
-	"schedule": [
-		"after 1am on Monday",
-		"before 7am on Monday"
-	]
+	"extends": ["github>V-ed/renovate-config"]
 }
