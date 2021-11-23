@@ -13,8 +13,8 @@
 
 	type ChatMessage = ChatMessageFragment & { active: boolean };
 
-	let user: string | undefined = undefined;
-	let messages: ChatMessage[] | undefined = undefined;
+	let username: string | undefined = undefined;
+	let messages: ChatMessage[] = [];
 
 	const messagesPromise = onMountPromise(async () => {
 		const response = await delayer(() => client.query(GetMessagesDocument).toPromise(), { delay: 500 });
@@ -28,20 +28,20 @@
 		if (messageQuery) {
 			const fetchedMessages = messageQuery.messages.map((message) => ({ active: true, ...message }));
 
-			messages = [...fetchedMessages, ...(messages ?? [])];
+			messages = [...fetchedMessages, ...messages];
 		}
 	});
 
 	subscription(operationStore(NewMessagesDocument), (prevMessages: ChatMessageFragment[] = [], data) => {
-		if (data.messageAdded.user.username == user) {
-			messages = messages?.map((m) => {
+		if (data.messageAdded.user.username == username) {
+			messages = messages.map((m) => {
 				if (m.text == data.messageAdded.text) {
 					m = { ...data.messageAdded, active: true };
 				}
 				return m;
 			});
 		} else {
-			messages = [...(messages ?? []), { active: true, ...data.messageAdded }];
+			messages = [...messages, { active: true, ...data.messageAdded }];
 		}
 
 		return [...prevMessages, data.messageAdded];
@@ -50,15 +50,14 @@
 	function handleSend(e: CustomEvent) {
 		const { username, text } = e.detail as UserMessage;
 
-		messages = [
-			...(messages ?? []),
-			{
-				active: false,
-				user: { username },
-				text,
-				time: undefined,
-			},
-		];
+		const newMessage: ChatMessage = {
+			active: false,
+			user: { username },
+			text,
+			time: undefined,
+		};
+
+		messages = [...messages, newMessage];
 	}
 </script>
 
@@ -69,7 +68,7 @@
 			<ProgressCircular indeterminate color="primary" class="ml-3" />
 		</div>
 	{:then}
-		{#if !messages}
+		{#if messages.length == 0}
 			<span>No messages yet! Be the first to send one!</span>
 		{:else}
 			<ul id="messages" class="list-disc list-inside px-5 pt-2 pb-5">
@@ -78,7 +77,7 @@
 				{/each}
 			</ul>
 		{/if}
-		<Form on:send={handleSend} bind:username={user} />
+		<Form on:send={handleSend} bind:username />
 	{:catch error}
 		<div class="flex justify-center">
 			<span>pls <span class="text-red-600 font-bold">{error}</span></span>
