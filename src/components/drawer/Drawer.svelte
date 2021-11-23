@@ -9,15 +9,9 @@
 	import Overlay from 'svelte-materialify/src/components/Overlay/Overlay.svelte';
 
 	let active: boolean = false;
-
-	let offset = 72;
 </script>
 
-<NavigationDrawer
-	style="height: calc(100vh - var(--s-nav-clipped-height)); top: var(--s-nav-clipped-height); --s-list-group-offset: {offset}px;"
-	fixed
-	active={!$isMobile || $isDrawerOpen}
->
+<NavigationDrawer fixed active={!$isMobile || $isDrawerOpen} class="drawer">
 	<List>
 		<ListItem>
 			<span slot="prepend">
@@ -25,7 +19,7 @@
 			</span>
 			Home
 		</ListItem>
-		<ListGroup bind:active {offset}>
+		<ListGroup bind:active offset={72}>
 			<span slot="prepend">
 				<Icon path={mdiCog} />
 			</span>
@@ -42,3 +36,12 @@
 </NavigationDrawer>
 
 <Overlay active={$isMobile && $isDrawerOpen} on:click={isDrawerOpen.toggle} index={1} />
+
+<style>
+	:global(.drawer:root) {
+		--s-list-group-offset: 72px;
+
+		height: calc(100vh - var(--s-nav-clipped-height));
+		top: var(--s-nav-clipped-height);
+	}
+</style>

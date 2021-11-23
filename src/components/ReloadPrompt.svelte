@@ -21,10 +21,10 @@
 		needRefresh.set(false);
 	}
 
-	$: toast = $offlineReady || $needRefresh;
+	$: active = $offlineReady || $needRefresh;
 </script>
 
-<Snackbar class="justify-between" right bottom bind:active={toast} timeout={$offlineReady ? offlineReadyTimeout : undefined}>
+<Snackbar class="justify-between" right bottom bind:active timeout={$offlineReady ? offlineReadyTimeout : undefined}>
 	{#if $offlineReady}
 		<span>App ready to work offline!</span>
 	{:else}

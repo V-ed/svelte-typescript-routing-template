@@ -46,4 +46,5 @@
 	"vscode-graphql.useSchemaFileDefinitions": true,
 	"vscode-edge-devtools.webRoot": "${workspaceFolder}/src",
 	"git.pullTags": false,
+	// "stylelint.validate": ["css", "scss", "svelte"]
 }

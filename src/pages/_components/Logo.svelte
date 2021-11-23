@@ -3,10 +3,10 @@
 <style>
 	.app-logo {
 		pointer-events: none;
-		animation: App-logo-pulse infinite 1.6s ease-in-out alternate;
+		animation: app-logo-pulse infinite 1.6s ease-in-out alternate;
 	}
 
-	@keyframes App-logo-pulse {
+	@keyframes app-logo-pulse {
 		from {
 			transform: scale(1);
 		}
