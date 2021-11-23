@@ -32,7 +32,7 @@
     "graphql": "15.7.2",
     "graphql-ws": "5.5.5",
     "minimum-delayer": "0.2.1",
-    "socket.io-client": "4.2.0"
+    "socket.io-client": "4.4.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.3.0",
