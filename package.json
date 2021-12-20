@@ -67,7 +67,7 @@
     "vite-plugin-pwa": "0.11.12",
     "vite-plugin-windicss": "1.5.4",
     "vite-tsconfig-paths": "3.3.17",
-    "windicss": "3.2.1"
+    "windicss": "3.4.0"
   },
   "routify": {
     "routifyDir": ".routify"
