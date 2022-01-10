@@ -55,7 +55,7 @@
     "stylelint-config-html": "1.0.0",
     "stylelint-config-standard": "24.0.0",
     "svelte": "3.45.0",
-    "svelte-check": "2.2.11",
+    "svelte-check": "2.2.12",
     "svelte-materialify": "0.3.11",
     "svelte-preprocess": "4.10.1",
     "svelte-windicss-preprocess": "4.2.5",
