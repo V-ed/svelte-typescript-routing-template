@@ -1,5 +1,9 @@
 # Svelte Routify WindiCSS Vite
 
+**ARCHIVING IN FAVOR OF [fullstacked](https://github.com/V-ed/fullstacked) REPOSITORY.**
+
+---
+
 A starter template for Svelte Application with Typescript, uses Routify file-based router, WindiCSS to compile TailwindCSS and Vite.
 
 [Svelte](https://svelte.dev)  
